@@ -7,6 +7,7 @@ import { createLogger } from 'redux-logger';
 
 import Main from 'components/Main.jsx';
 
+
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 

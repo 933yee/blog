@@ -1,6 +1,5 @@
 node_modules/*
+dist/*
 .tern-project
-dist/*.bundle.js
-dist/*.bundle.js.map
 package-lock.json
 .DS_Store
