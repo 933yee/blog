@@ -1,0 +1,1 @@
+# This blog is created by Kevin Lee using React.js, mimicking the Chirpy theme. It is intended for personal use only. 
