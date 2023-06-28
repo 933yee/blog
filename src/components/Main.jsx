@@ -21,7 +21,7 @@ function Main() {
     // window.location.href = '/';
 
     const handleClickHomepage = () => {
-        window.location.href = '/';
+        window.location.href = '/blog';
     }
 
     return (
@@ -41,7 +41,7 @@ function Main() {
                 </div>
                 <Router>
                     <div className='options'>
-                        <Link to="/" className='item'>
+                        <Link to="/blog" className='item'>
                             home
                         </Link>
                         <Link to="/categories" className='item'>
