@@ -1,16 +1,13 @@
 /* main */
-.main {
+.main-container {
     height: 100vh;
     display: flex;
 }
 
-.main .navbar {
-    background-color: rgb(39, 40, 43);
-    height: 4rem;
-    width: 100%;
-}
-
-.main .leftbar {
+.main-container .leftbar {
+    background-image: url('./image/bg.png');
+    background-size: cover;
+    background-position: center;
     background-color: rgb(31, 32, 39);
     color: white;
     width: 16rem;
@@ -18,32 +15,60 @@
     flex-shrink: 0;
 }
 
+.main-container .right {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: rgb(255, 255, 255);
+}
+
+.main-container .navbar {
+    background-color: rgb(39, 40, 43);
+    height: 4rem;
+    width: 100%;
+}
+
+.main-container .contents {
+    height: 90%;
+    width: 80%;
+}
+
+.main-container .page {
+    height: 100%;
+    width: 100%;
+}
+
 @media (max-width: 992px) {
 
     /* 576 768 992 1200 */
 }
 
-.main .contents {
-    height: 100%;
-    width: 100%;
-    /* background-color: white; */
-}
-
-
 /* leftbar */
 
 /* top */
-.main .introduce {
+.main-container .introduce {
+    background-color: rgb(31, 32, 39, 0.7);
+
     height: 40%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-top: 2rem;
 }
 
-.main .avatar {
+/* .main-container .main-bg {
+    height: 85%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
+
+.main-container .avatar {
     height: 7rem;
     width: 7rem;
     border: 2px solid rgb(130, 130, 130);
@@ -51,13 +76,13 @@
     transition: 200ms;
 }
 
-.main .avatar:hover {
+.main-container .avatar:hover {
     border-color: white;
-    scale: 1.1;
+    scale: 1.05;
     cursor: pointer;
 }
 
-.main .name {
+.main-container .name {
     height: 15%;
     width: 100%;
     display: flex;
@@ -70,12 +95,12 @@
     transition: 200ms;
 }
 
-.main .name:hover {
+.main-container .name:hover {
     color: rgb(211, 211, 211);
     cursor: pointer;
 }
 
-.main .motto {
+.main-container .motto {
     color: rgb(141, 141, 141, 0.8);
     height: 15%;
     width: 100%;
@@ -87,7 +112,9 @@
 }
 
 /* middle */
-.main .options {
+.main-container .options {
+    background-color: rgb(31, 32, 39, 0.7);
+
     height: 40%;
     width: 100%;
     display: flex;
@@ -97,26 +124,60 @@
     text-transform: uppercase;
 }
 
-.main .item {
+.main-container .options-text {
+    width: 80%;
+    margin-left: 4.5rem;
+}
+
+.main-container .options-icon {
+    margin-right: 1rem;
+    margin-bottom: 0.2rem;
+    font-size: 1.2rem;
+}
+
+
+.main-container .item {
     color: rgb(130, 130, 130);
-    transition: 200ms;
+    transition: color 200ms, transform 300ms;
     width: 100%;
     height: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 0.9rem;
-    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
     font-weight: 600;
+    position: relative;
+    /* Add position relative */
 }
 
-.main .item:hover {
+.main-container .item::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -3px;
+    bottom: 0;
+    width: 3px;
+    background-color: white;
+    transform: scaleX(0);
+    transition: transform 300ms;
+}
+
+.main-container .item:hover {
     color: rgb(211, 211, 211);
     text-decoration: none;
+    transform: translateX(-3px);
 }
 
+.main-container .item:hover::after {
+    transform: scaleX(1);
+}
+
+
+
 /* bottom */
-.main .contact {
+.main-container .contact {
+    background-color: rgb(31, 32, 39, 0.7);
+
     height: 20%;
     width: 100%;
     display: flex;
@@ -126,9 +187,10 @@
     flex-direction: row;
 }
 
-.main .contact-item {
+.main-container .contact-item {
+    border-top: 1px solid rgb(161, 161, 161);
     width: 15%;
-    height: 100%;
+    height: 20%;
     display: flex;
     justify-content: center;
     align-items: end;
@@ -136,17 +198,20 @@
     cursor: pointer;
     color: rgb(130, 130, 130);
     transition: 200ms;
+    padding-top: 2rem;
 }
 
-.main .contact-item:hover {
+.main-container .contact-item:hover {
     color: rgb(211, 211, 211);
     text-decoration: none;
 }
 
-/* contents */
-.main .right {
+.main-container .about-text {
+    color: rgb(255, 255, 255, 0.5);
     height: 100%;
     width: 100%;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 10rem;
 }
