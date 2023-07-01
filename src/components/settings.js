@@ -5,4 +5,4 @@ export const files = [
     'yee.md',
 ];
 
-export const local = true;
+export const local = false;

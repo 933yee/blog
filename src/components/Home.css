@@ -19,6 +19,7 @@
     height: 40%;
     width: 90%;
     border-bottom: 1px solid rgb(62, 62, 62);
+    text-decoration: none;
 }
 
 .home-container .post {
@@ -51,4 +52,9 @@
 /* Customize the scrollbar when hovering over it */
 .home-container::-webkit-scrollbar-thumb:hover {
     background-color: #959595;
+}
+
+.md-page {
+    height: 100%;
+    width: 100%;
 }

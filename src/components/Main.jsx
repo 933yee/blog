@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-    BrowserRouter as Router,
+    HashRouter as Router,
     Route,
     Link
 } from 'react-router-dom';
@@ -16,12 +16,12 @@ import './Main.css';
 
 function Main() {
     const handleClickHomepage = () => {
-        window.location.href = '/blog';
+        window.location.href = '/';
     };
 
 
     return (
-        <Router>
+        <Router basename="/">
             <div className='main-container'>
                 <div className='leftbar'>
                     <div className='introduce'>
@@ -36,11 +36,11 @@ function Main() {
                         </div>
                         {/* </div> */}
 
-                        <div className='motto'>sip, code, espresso yourself.</div>
+                        <div className='motto'>Espresso yourself.</div>
                     </div>
 
                     <div className='options'>
-                        <Link to='/blog' className='item'>
+                        <Link to='/home' className='item'>
                             <div className='options-text'>
                                 <AiFillHome className='options-icon'></AiFillHome>
                                 home
@@ -103,7 +103,7 @@ function Main() {
                                 {markdownContent}
                             </ReactMarkdown>
                         </div> */}
-                        <Route path='/blog' render={() => <div className='page'><Home></Home></div>} />
+                        <Route path='/home' render={() => <div className='page'><Home></Home></div>} />
                         <Route path='/categories' render={() => <div>categories</div>} />
                         <Route path='/tags' render={() => <div>tags</div>} />
                         <Route path='/archives' render={() => <div>archives</div>} />
