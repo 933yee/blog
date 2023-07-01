@@ -2,59 +2,14 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/2ec17e8a50.js" crossorigin="anonymous"></script>
-    <title>Kevin's blog</title>
-    <script type="text/javascript">
-        (function () {
-            var pathSegmentsToKeep = 1;
-
-            var l = window.location;
-            l.replace(
-                l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-                l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?' +
-                l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-                (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-                l.hash
-            );
-        })();
-
-    </script>
+    <meta charset="utf-8">
+    <title>Page Not Found</title>
 </head>
 
 <body>
-    <div id="app"></div>
-    <script src="https://unpkg.com/react@16.14.0/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@16.14.0/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/react-router-dom@5.3.0/umd/react-router-dom.min.js"></script>
     <script>
-        // JavaScript code to handle routing and render your app
-        // when 404.html is loaded
-        const { BrowserRouter, Route, Switch } = ReactRouterDOM;
-
-        // Define your components
-        function Home() {
-            return <h1>Home</h1>;
-        }
-
-        function Main() {
-            return (
-                <BrowserRouter basename="/home">
-                    <Switch>
-                        <Route exact path="/" component={Home} />
-                        {/* Add more routes here */}
-                    </Switch>
-                </BrowserRouter>
-            );
-        }
-
-        // Render your app
-        ReactDOM.render(<Main />, document.getElementById('app'));
+        // 將 URL 轉向到根目錄下的 index.html 文件
+        window.location.replace('/index.html');
     </script>
 </body>
 
