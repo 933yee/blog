@@ -11,7 +11,6 @@ NTHU Lecture
 
 ## Lecture11,12 Cocos Creator - Script & UI
 
-<!-- {%youtube SZxVnZT254A%} -->
 
 <video src="https://www.youtube.com/watch?v=SZxVnZT254A" controls>
   你的浏览器不支持 <code>video</code> 标签。
@@ -119,7 +118,6 @@ NTHU Lecture
 <hr>
 
 ## Lecture13 Cocos Creator - Physics
-<!-- {%youtube fuMxe9x8PSc%} -->
 
 ### 3:40 Physics Components
 - Enable physics manager
@@ -195,7 +193,6 @@ NTHU Lecture
     }
     ```
 ## Lecture14 Cocos Creator - Action System & Scheduler
-<!-- {%youtube Y2iGxMLZYlw%} -->
 
 - 03:18 Action System APIs
     ```ts
