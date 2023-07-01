@@ -28,9 +28,35 @@
 </head>
 
 <body>
-    <div id="root"></div>
-    <script src="./vendors~index.bundle.js"></script>
-    <script src="./index.bundle.js"></script>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@16.14.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.14.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/react-router-dom@5.3.0/umd/react-router-dom.min.js"></script>
+    <script>
+        // JavaScript code to handle routing and render your app
+        // when 404.html is loaded
+        const { BrowserRouter, Route, Switch, Redirect } = ReactRouterDOM;
+
+        // Define your components
+        function Home() {
+            return <h1>Home</h1>;
+        }
+
+        function Main() {
+            return (
+                <BrowserRouter>
+                    <Switch>
+                        <Route exact path="/home" component={Home} />
+                        {/* Add more routes here */}
+                        <Redirect to="/home" />
+                    </Switch>
+                </BrowserRouter>
+            );
+        }
+
+        // Render your app
+        ReactDOM.render(<Main />, document.getElementById('app'));
+    </script>
 </body>
 
 </html>
