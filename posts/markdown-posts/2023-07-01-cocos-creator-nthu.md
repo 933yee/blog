@@ -119,7 +119,7 @@ NTHU Lecture
 <hr>
 
 ## Lecture13 Cocos Creator - Physics
-{%youtube fuMxe9x8PSc%}
+<!-- {%youtube fuMxe9x8PSc%} -->
 
 ### 3:40 Physics Components
 - Enable physics manager
