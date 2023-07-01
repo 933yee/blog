@@ -35,7 +35,7 @@
     <script>
         // JavaScript code to handle routing and render your app
         // when 404.html is loaded
-        const { BrowserRouter, Route, Switch, Redirect } = ReactRouterDOM;
+        const { BrowserRouter, Route, Switch } = ReactRouterDOM;
 
         // Define your components
         function Home() {
@@ -44,11 +44,10 @@
 
         function Main() {
             return (
-                <BrowserRouter>
+                <BrowserRouter basename="/home">
                     <Switch>
-                        <Route exact path="/home" component={Home} />
+                        <Route exact path="/" component={Home} />
                         {/* Add more routes here */}
-                        <Redirect to="/home" />
                     </Switch>
                 </BrowserRouter>
             );
