@@ -16,7 +16,6 @@ Cocos Creator (2/4)
 https://www.youtube.com/watch?v=fuMxe9x8PSc
 ```
 
-### 3:40 Physics Components
 - Enable physics manager
     ```typescript
     onLoad(){
