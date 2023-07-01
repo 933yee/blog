@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
-import markdownIt from 'markdown-it';
-import { AiFillFolderOpen } from "react-icons/ai";
-import { MdDateRange } from "react-icons/md";
+import { AiFillFolderOpen } from 'react-icons/ai';
+import { MdDateRange } from 'react-icons/md';
 import { local } from './settings.js';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-
+import rehypeRaw from 'rehype-raw';
+import ReactPlayer from 'react-player';
 import './Post.css';
 
 // local or github page side
-const postsBaseUrl = local ? 'http://localhost:7070/posts/markdown-posts/' : 'https://raw.githubusercontent.com/933yee/933yee.github.io/gh-pages/posts/markdown-posts/';
-const imagesBaseUrl = local ? 'http://localhost:7070/posts/front-cover/' : 'https://933yee.github.io/posts/front-cover/';
+const postsBaseUrl = local
+    ? 'http://localhost:7070/posts/markdown-posts/'
+    : 'https://raw.githubusercontent.com/933yee/933yee.github.io/gh-pages/posts/markdown-posts/';
+const imagesBaseUrl = local
+    ? 'http://localhost:7070/posts/front-cover/'
+    : 'https://raw.githubusercontent.com/933yee/933yee.github.io/gh-pages/posts/front-cover/';
 
 const defaultImagePath = `${imagesBaseUrl}default-image.png`;
 
@@ -28,15 +32,15 @@ function Post(props) {
     useEffect(() => {
         // Fetch the Markdown content from the file
         fetch(`${postsBaseUrl}${props.fileName}`)
-            .then(response => response.text())
-            .then(content => {
+            .then((response) => response.text())
+            .then((content) => {
                 // Extract metadata
                 const { metadata, remainingContent } = extractMetadata(content);
                 if (metadata) {
                     const { date, title, subtitle, category, frontCover } = metadata;
                     // check whether frontCover is in md file and set the front cover of the post
-                    if (frontCover == undefined) {
-                        getImagePath().then(finalImagePath => {
+                    if (frontCover === undefined) {
+                        getImagePath().then((finalImagePath) => {
                             setImagePath(finalImagePath);
                         });
                     } else {
@@ -51,7 +55,7 @@ function Post(props) {
 
                 // Set the Markdown content
                 setMarkdownContent(remainingContent);
-            })
+            });
     }, []);
 
     function extractMetadata(markdownContent) {
@@ -61,7 +65,7 @@ function Post(props) {
             const metadataLines = metadataMatch[1].trim().split('\n');
             const metadata = {};
             for (const line of metadataLines) {
-                const [key, value] = line.split(':').map(item => item.trim());
+                const [key, value] = line.split(':').map((item) => item.trim());
                 metadata[key] = value;
             }
             const remainingContent = markdownContent.substring(metadataMatch[0].length);
@@ -72,7 +76,7 @@ function Post(props) {
 
     // check whether the post image exists
     function checkImageExists(imageUrl) {
-        return new Promise(resolve => {
+        return new Promise((resolve) => {
             const img = new Image();
             img.onload = function () {
                 resolve(true);
@@ -101,48 +105,54 @@ function Post(props) {
             const language = className ? className.replace('language-', '') : '';
             const value = children[0] || '';
 
-            return (
-                <SyntaxHighlighter language={language} style={atomDark}>
-                    {value}
-                </SyntaxHighlighter>
-            );
+            if (language === 'youtube') { // 處理YouTube影片
+                return <div className="post-video" ><ReactPlayer url={value} controls /></div>;
+            } else {
+                return (
+                    <SyntaxHighlighter language={language} style={atomDark}>
+                        {value}
+                    </SyntaxHighlighter>
+                );
+            }
         },
     };
 
-
-
     return (
-        index == undefined ?
-            <div className='post-container'>
-                <div className='post-img-container'>
+        index === undefined ? (
+            <div className="post-container">
+                <div className="post-img-container">
                     <img
                         src={imagePath}
                         alt={`${props.fileName.split('.')[0]}.png`}
-                        className='post-img'
+                        className="post-img"
                     />
-                    <div className='color-bar'></div>
+                    <div className="color-bar"></div>
                 </div>
-                <div className='post-content'>
-                    <div className='post-title'>{title}</div>
-                    <div className='post-subtitle'>{subtitle}</div>
-                    <div className='post-information'>
-                        <div className='post-date'>
-                            <MdDateRange className='date-icon'></MdDateRange>
+                <div className="post-content">
+                    <div className="post-title">{title}</div>
+                    <div className="post-subtitle">{subtitle}</div>
+                    <div className="post-information">
+                        <div className="post-date">
+                            <MdDateRange className="date-icon"></MdDateRange>
                             {date}
                         </div>
-                        <div className='post-category'>
-                            <AiFillFolderOpen className='category-icon'></AiFillFolderOpen>
+                        <div className="post-category">
+                            <AiFillFolderOpen className="category-icon"></AiFillFolderOpen>
                             {category}
                         </div>
                     </div>
                 </div>
             </div>
-            :
-            <div className='post-file-content'>
-                <ReactMarkdown remarkPlugins={[gfm]} components={renderers}>
-                    {markdownContent}
-                </ReactMarkdown>
+        ) : (
+            <div className="post-file-content">
+                <ReactMarkdown
+                    remarkPlugins={[gfm]}
+                    components={renderers}
+                    children={markdownContent}
+                    rehypePlugins={[rehypeRaw]} // Add rehypeRaw plugin to render HTML tags
+                />
             </div>
+        )
     );
 }
 

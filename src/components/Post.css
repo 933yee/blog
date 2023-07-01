@@ -53,7 +53,7 @@
 .post-container .post-title {
     height: 50%;
     width: 100%;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     display: flex;
     flex-direction: row;
@@ -64,7 +64,6 @@
 .post-container .post-subtitle {
     height: 30%;
     width: 100%;
-    font-size: 1.1rem;
     font-size: 1.2rem;
     color: rgb(179, 179, 179);
 }
@@ -111,8 +110,10 @@
     height: 100%;
     width: 100%;
     padding-left: 2rem;
+    padding-top: 2rem;
 }
 
-.syntax {
-    background-color: black;
+.post-video {
+    display: flex;
+    overflow: hidden;
 }
