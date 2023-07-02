@@ -3,7 +3,7 @@ date: 2023-07-01
 title: Cocos Creator (3/4)
 subtitle: [CGV/MIS] 2023 Summer Internship Entrance Test for Project Students
 category: personal note
-frontCover: study.png
+frontCover: cocos.png
 ---
 
 Cocos Creator (3/4)
@@ -35,7 +35,9 @@ https://www.youtube.com/watch?v=Y2iGxMLZYlw
     ```
 - 09:00 Basic Action
     - 10:02 Interval Action
-        - 有時間控制
+        ```def 
+        有時間控制
+        ```
     ```typescript
     let action;
     // the node moves to position(10, 10) within 2 seconds
@@ -65,10 +67,11 @@ https://www.youtube.com/watch?v=Y2iGxMLZYlw
 
     // the opacity of node fades to 0 within 2 seconds
     action = fadeTo(2, 0);
-
     ```
     - 17:10 Free Action
-        - 馬上發生
+        ```def 
+        馬上發生
+        ```
     ``` typescript
     let action;
 
@@ -83,7 +86,6 @@ https://www.youtube.com/watch?v=Y2iGxMLZYlw
 
     // flip the node according to X-axis
     action = flipX();
-
     ```
 
 - 20:13 Container Action

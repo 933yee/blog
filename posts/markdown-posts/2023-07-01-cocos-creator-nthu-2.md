@@ -3,7 +3,7 @@ date: 2023-07-01
 title: Cocos Creator (2/4)
 subtitle: [CGV/MIS] 2023 Summer Internship Entrance Test for Project Students
 category: personal note
-frontCover: study.png
+frontCover: cocos.png
 ---
 
 Cocos Creator (2/4)
@@ -38,28 +38,43 @@ https://www.youtube.com/watch?v=fuMxe9x8PSc
             - 沒有質量，可以設定速度，可以用來碰撞
         4. Animated
             - 結合Kinematic和Animation 
-            <br>
+            <br></br>
+
+
 - 16:02 Collider
-    : Collision System
+    - Collision System
         - 偵測是否有兩個物體碰撞
-    : Physics System
-        - 繼承 Collision System，並處理物理特性
-        - Type: Box, Circle, Chain, Polygon
+    - Physics System
+        ```def 
+        繼承 Collision System，並處理物理特性
+        ```
+        - Type
+            ```def
+            Box, Circle, Chain, Polygon
+            ```
         - Editing
-            - 改變 collider 外觀
+            ```def
+            改變 collider 外觀
+            ```
         - tag
-            - 加標籤，偵測碰撞時是哪個標籤
+             ```def
+            加標籤，偵測碰撞時是哪個標籤
+            ```
         - Sensor 
-            - no collision behavior occurs
-            - 
-        <br>
+            ```def
+            no collision behavior occurs
+            ```
 - 33:42 Collision Callback Functions
     - onBeginContact(contact, self, other)
-        - 兩個物體碰撞的瞬間
+        ```def
+        兩個物體碰撞的瞬間
+        ```
     - onEndContact(contact, self, other)
-        - 兩個物體結束碰撞的瞬間
+        ```def
+       兩個物體結束碰撞的瞬間
+        ```
     - onEndContact(contact, self, other)
-    <br>
+    <br></br>
 - 45:55 Add Force to RightBody
     ```typescript
     private jump(){
