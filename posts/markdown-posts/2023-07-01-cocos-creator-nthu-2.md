@@ -6,12 +6,6 @@ category: personal note
 frontCover: cocos.png
 ---
 
-Cocos Creator (2/4)
-===
-<hr style="border-color: rgb(161, 161, 161, 0.5); width: 100%;">
-
-## Lecture13 Cocos Creator - Physics
-
 ```youtube
 https://www.youtube.com/watch?v=fuMxe9x8PSc
 ```
@@ -19,7 +13,8 @@ https://www.youtube.com/watch?v=fuMxe9x8PSc
 - Enable physics manager
     ```typescript
     onLoad(){
-        director.getPhysicsManager().enabled = true;
+        PhysicsSystem2D.instance.on(Contact2DType.BEGIN_CONTACT, this.onBeginContact, this);
+        PhysicsSystem2D.instance.on(Contact2DType.END_CONTACT, this.onEndContact, this);
     }
     ```
 - 08:13 Rigid Body: Basic Properties
@@ -78,14 +73,14 @@ https://www.youtube.com/watch?v=fuMxe9x8PSc
 - 45:55 Add Force to RightBody
     ```typescript
     private jump(){
-        this.getComponent(RigidBody).applyForceToCenter(new Vec2(0, 1500000), true);
+        this.getComponent(RigidBody2D).applyForceToCenter(new Vec2(0, 1500000), true);
     }
     ```
     
 - 46:15 Change Velocity of RigidBody
     ```typescript
     private jump(){
-        this.getComponent(RigidBody).linearVelocity = v2(0, 1500);
+        this.getComponent(RigidBody2D).linearVelocity = v2(0, 1500);
     }
     ```
     

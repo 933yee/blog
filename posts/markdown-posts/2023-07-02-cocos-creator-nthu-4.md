@@ -1,16 +1,11 @@
 ---
-date: 2023-07-01
+date: 2023-07-02
 title: Cocos Creator (4/4)
 subtitle: [CGV/MIS] 2023 Summer Internship Entrance Test for Project Students
 category: personal note
 frontCover: cocos.png
 ---
 
-Cocos Creator (4/4)
-===
-<hr style="border-color: rgb(161, 161, 161, 0.5); width: 100%;">
-
-## Lecture15 Cocos Creator - Animation
 ```citation
 整體來說看起來跟 Unity 差不多，不過Unity有更完善的recording、animator可以用
 ```
@@ -22,7 +17,7 @@ https://www.youtube.com/watch?v=JMf_u2C3HI8
 ### 01:44 Animation Basic
 
 - 作法
-    1. Node > Add Component > Other Component > Animation
+    1. Node > Add Component > Animation
     2. assets > right click > Create > Animation Clip
     <br></br>
 - Sprites Sheet
@@ -31,7 +26,8 @@ https://www.youtube.com/watch?v=JMf_u2C3HI8
         2. load fast
     - aka Atlas
         - use **TexturePacker** or **Zwoptex** to generate .plist and .png files
-
+  
+<br>
 
 ### 40:02 Animation Controle with Script
 - Get animation component

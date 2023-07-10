@@ -6,12 +6,6 @@ category: personal note
 frontCover: cocos.png
 ---
 
-Cocos Creator (3/4)
-===
-<hr style="border-color: rgb(161, 161, 161, 0.5); width: 100%;">
-
-## Lecture14 Cocos Creator - Action System & Scheduler
-
 ```youtube
 https://www.youtube.com/watch?v=Y2iGxMLZYlw
 ```

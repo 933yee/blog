@@ -1,22 +1,22 @@
 ---
 date: 2023-06-30
-title: My first article on this website
+title: CSES Fibonacci Numbers
 subtitle: 
 category: information techonology
 frontCover: IT.png
 ---
 
-
----
 ## [Problem Link](https://cses.fi/problemset/task/1722 "CSES-Fibonacci Numbers")
 
-**作法**
-===
+<br>
 
-矩陣 + 快速冪
+## 作法
+- 矩陣運算
+- 乘法快速冪
+  
+<br>
 
-**Code**
-===
+## Code
 
 ```cpp
 #include <bits/stdc++.h>

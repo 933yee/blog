@@ -6,17 +6,11 @@ category: personal note
 frontCover: cocos.png
 ---
 
-Cocos Creator (1/4)
-===
-<hr style="border-color: rgb(161, 161, 161, 0.5); width: 100%;">
-
-## Lecture11,12 Cocos Creator - Script & UI
-
 ```youtube
 https://www.youtube.com/watch?v=SZxVnZT254A
 ```
 
-### 4:50  script
+## 4:50  script
 - 08:27 Structure
     ```ts
     // variable example
@@ -76,7 +70,7 @@ https://www.youtube.com/watch?v=SZxVnZT254A
        // off => unregister
    }
     onKeyDown(event){
-        if(event.keyCode == macro.KEY.w)
+        if(event.keyCode == KeyCode.KEY_W)
             // if press w, then ...
     }
     ```
@@ -102,7 +96,7 @@ https://www.youtube.com/watch?v=SZxVnZT254A
 
 <br>
 
-### 1:07:05  UI
+## 1:07:05  UI
 - 1:08:05 Canvas
 - 1:11:15 Layout
 - 1:16:16 Button
