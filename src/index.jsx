@@ -4,6 +4,8 @@ import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { createLogger } from 'redux-logger';
+import '../node_modules/katex/dist/katex.css';
+import '../node_modules/katex/dist/katex.min.css';
 
 import Main from 'components/Main.jsx';
 

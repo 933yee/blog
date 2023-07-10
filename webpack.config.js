@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-
 const srcPath = path.resolve(__dirname, 'src');
 const distPath = path.resolve(__dirname, 'dist');
 
@@ -11,6 +10,25 @@ const htmlPlugin = new HtmlWebPackPlugin({
     filename: "./index.html"
 });
 
+const runWatchMarkdownScript = {
+    apply: (compiler) => {
+        compiler.hooks.done.tap('RunWatchMarkdownPlugin', (stats) => {
+            const runWatchMarkdownCommand = 'node ./prebuild_scripts/watchMarkdown.js';
+
+            // 执行脚本
+            const childProcess = require('child_process');
+            childProcess.exec(runWatchMarkdownCommand, (err, stdout, stderr) => {
+                if (err) {
+                    console.error(err);
+                } else {
+                    console.log(stdout);
+                }
+            });
+        });
+    }
+};
+
+
 module.exports = {
     context: srcPath,
     resolve: {
@@ -18,7 +36,8 @@ module.exports = {
             states: path.resolve(srcPath, 'states'),
             utilities: path.resolve(srcPath, 'utilities'),
             components: path.resolve(srcPath, 'components'),
-            api: path.resolve(srcPath, 'api')
+            api: path.resolve(srcPath, 'api'),
+            settings: path.resolve(srcPath, 'settings')
         }
     },
     entry: {
@@ -72,12 +91,24 @@ module.exports = {
             chunks: "all"
         }
     },
-    plugins: [htmlPlugin],
+    plugins: [htmlPlugin, runWatchMarkdownScript],
     devServer: {
         contentBase: distPath,
         compress: true,
         port: 7070,
         historyApiFallback: true,
+        before: () => {
+            const generateFilesListCommand = 'node ./prebuild_scripts/generateFilesList.js';
+
+            const childProcess = require('child_process');
+            childProcess.exec(generateFilesListCommand, (err, stdout, stderr) => {
+                if (err) {
+                    console.error(err);
+                } else {
+                    console.log(stdout);
+                }
+            });
+        }
     },
     devtool: 'cheap-source-map'
 };

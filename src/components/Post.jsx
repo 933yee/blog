@@ -4,21 +4,26 @@ import gfm from 'remark-gfm';
 import { AiFillFolderOpen } from 'react-icons/ai';
 import { MdDateRange } from 'react-icons/md';
 import { local } from './settings.js';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import rehypeRaw from 'rehype-raw';
 import ReactPlayer from 'react-player';
 import './Post.css';
 
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
+const codeStyle = dracula;
+
 // local or github page side
+const postImagesBaseUrl = local
+    ? 'http://localhost:7070/posts/post-images/'
+    : 'https://raw.githubusercontent.com/933yee/933yee.github.io/gh-pages/posts/post-images/';
 const postsBaseUrl = local
     ? 'http://localhost:7070/posts/markdown-posts/'
     : 'https://raw.githubusercontent.com/933yee/933yee.github.io/gh-pages/posts/markdown-posts/';
-const imagesBaseUrl = local
+const frontCoverBaseUrl = local
     ? 'http://localhost:7070/posts/front-cover/'
     : 'https://raw.githubusercontent.com/933yee/933yee.github.io/gh-pages/posts/front-cover/';
 
-const defaultImagePath = `${imagesBaseUrl}default-image.png`;
+const defaultImagePath = `${frontCoverBaseUrl}default-image.png`;
 
 function Post(props) {
     const [markdownContent, setMarkdownContent] = useState('');
@@ -30,32 +35,34 @@ function Post(props) {
     const index = props.index;
 
     useEffect(() => {
-        // Fetch the Markdown content from the file
-        fetch(`${postsBaseUrl}${props.fileName}`)
-            .then((response) => response.text())
-            .then((content) => {
-                // Extract metadata
-                const { metadata, remainingContent } = extractMetadata(content);
-                if (metadata) {
-                    const { date, title, subtitle, category, frontCover } = metadata;
-                    // check whether frontCover is in md file and set the front cover of the post
-                    if (frontCover === undefined) {
-                        getImagePath().then((finalImagePath) => {
-                            setImagePath(finalImagePath);
-                        });
-                    } else {
-                        setImagePath(`${imagesBaseUrl}${frontCover}`);
+        async function fetchData() {
+            fetch(`${postsBaseUrl}${props.fileName}`)
+                .then((response) => response.text())
+                .then((content) => {
+                    // Extract metadata
+                    const { metadata, remainingContent } = extractMetadata(content);
+                    if (metadata) {
+                        const { date, title, subtitle, category, frontCover } = metadata;
+                        // check whether frontCover is in md file and set the front cover of the post
+                        if (frontCover === undefined) {
+                            getImagePath().then((finalImagePath) => {
+                                setImagePath(finalImagePath);
+                            });
+                        } else {
+                            setImagePath(`${frontCoverBaseUrl}${frontCover}`);
+                        }
+
+                        setDate(date);
+                        setTitle(title);
+                        setSubTitle(subtitle);
+                        setCategory(category);
                     }
 
-                    setDate(date);
-                    setTitle(title);
-                    setSubTitle(subtitle);
-                    setCategory(category);
-                }
-
-                // Set the Markdown content
-                setMarkdownContent(remainingContent);
-            });
+                    // Set the Markdown content
+                    setMarkdownContent(remainingContent);
+                });
+        }
+        fetchData();
     }, []);
 
     function extractMetadata(markdownContent) {
@@ -90,7 +97,7 @@ function Post(props) {
 
     // get the path of the post image
     async function getImagePath() {
-        const imagePath = `${imagesBaseUrl}${props.fileName.split('.')[0]}.png`;
+        const imagePath = `${frontCoverBaseUrl}${props.fileName.split('.')[0]}.png`;
         const imageExists = await checkImageExists(imagePath);
         if (imageExists) {
             return imagePath;
@@ -101,15 +108,37 @@ function Post(props) {
 
     // syntax highlighter
     const renderers = {
-        code: ({ node, inline, className, children, ...props }) => {
+        code: ({ node, inline, className, children }) => {
             const language = className ? className.replace('language-', '') : '';
             const value = children[0] || '';
 
             if (language === 'youtube') { // 處理YouTube影片
-                return <div className="post-video" ><ReactPlayer url={value} controls /></div>;
+                return (
+                    <div className="post-video" ><ReactPlayer url={value} controls /></div>
+                );
+            } else if (language === 'def') {
+                return (
+                    <div style={{ display: "flex", color: "rgb(0, 255, 128, 0.8)", paddingLeft: "0.5rem", whiteSpace: "pre-wrap" }}>
+                        »<div style={{ paddingLeft: "0.5rem" }}>{value}</div>
+                    </div >
+                );
+            } else if (language === 'citation') {
+                return (
+                    <div style={{ paddingLeft: "1em", borderLeft: "4px solid rgb(255, 255, 255, 0.2)", color: "rgb(255, 255, 255, 0.5)", whiteSpace: "pre-wrap" }}>
+                        {value}
+                    </div>
+                );
+            } else if (language === 'img') {
+                const folderName = props.fileName.split('.')[0] + '/';
+                return (
+                    <img
+                        src={`${postImagesBaseUrl}${folderName}${value}`}
+                        style={{ objectFit: 'cover', objectPosition: 'center', width: '70%', height: '70%' }}
+                    ></img>
+                );
             } else {
                 return (
-                    <SyntaxHighlighter language={language} style={atomDark}>
+                    <SyntaxHighlighter language={language} style={codeStyle}>
                         {value}
                     </SyntaxHighlighter>
                 );
@@ -147,9 +176,9 @@ function Post(props) {
             <div className="post-file-content">
                 <ReactMarkdown
                     remarkPlugins={[gfm]}
+                    rehypePlugins={[rehypeRaw]} // Add rehypeKatex and rehypeRaw plugins
                     components={renderers}
                     children={markdownContent}
-                    rehypePlugins={[rehypeRaw]} // Add rehypeRaw plugin to render HTML tags
                 />
             </div>
         )

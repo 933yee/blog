@@ -10,7 +10,6 @@ import { BiCategoryAlt } from "react-icons/bi"; BsFillArchiveFill
 import { BsFillArchiveFill, BsFillPersonFill } from "react-icons/bs";
 import Home from 'components/Home.jsx'
 
-
 import './Main.css';
 
 

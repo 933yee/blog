@@ -2,3 +2,9 @@ body {
     background-color: rgb(27, 27, 30);
     font-family: 'Lora', serif;
 }
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
