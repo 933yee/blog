@@ -115,29 +115,31 @@
     padding-right: 2rem;
     padding-top: 2rem;
     font-family: 'Noto Sans', sans-serif;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .post-file-content h2 {
-    color: rgba(204, 73, 82, 1);
+    font-size: 1.875rem;
+    color: rgba(205, 129, 81, 1);
     text-shadow: 2px 2px rgba(255, 255, 255, 0.1);
     font-weight: 700;
 }
 
 .post-file-content h3 {
-    color: rgba(205, 129, 81, 1);
+    font-size: 1.5rem;
+    color: rgba(204, 73, 82, 1);
     text-shadow: 2px 2px rgba(255, 255, 255, 0.1);
     font-weight: 600;
 }
 
 .post-file-content h4 {
+    font-size: 1.25rem;
     color: rgb(0, 166, 255);
     text-shadow: 2px 2px rgba(255, 255, 255, 0.1);
     font-weight: 500;
-    font-size: 1.3rem;
 }
 
 .post-file-content ul {
-
     opacity: 1;
 }
 
@@ -145,8 +147,7 @@
     opacity: 0.8;
 }
 
-
-.post-video {
-    display: flex;
-    overflow: hidden;
+.post-file-content pre {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
 }

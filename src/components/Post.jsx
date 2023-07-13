@@ -9,9 +9,9 @@ import ReactPlayer from 'react-player';
 import './Post.css';
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
-const codeStyle = dracula;
-
+import { dracula, twilight, nightOwl, oneDark, tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
+const codeStyle = tomorrow;
+const Latex = require('react-latex');
 // local or github page side
 const postImagesBaseUrl = local
     ? 'http://localhost:7070/posts/post-images/'
@@ -114,11 +114,16 @@ function Post(props) {
 
             if (language === 'youtube') { // 處理YouTube影片
                 return (
-                    <div className="post-video" ><ReactPlayer url={value} controls /></div>
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        overflow: 'hidden'
+                    }} ><ReactPlayer url={value} controls /></div>
                 );
             } else if (language === 'def') {
                 return (
-                    <div style={{ display: "flex", color: "rgb(0, 255, 128, 0.8)", paddingLeft: "0.5rem", whiteSpace: "pre-wrap" }}>
+                    <div style={{ display: "flex", color: "rgb(255, 255, 255, 0.6)", paddingLeft: "0.5rem", whiteSpace: "pre-wrap" }}>
                         »<div style={{ paddingLeft: "0.5rem" }}>{value}</div>
                     </div >
                 );
@@ -133,13 +138,39 @@ function Post(props) {
                 return (
                     <img
                         src={`${postImagesBaseUrl}${folderName}${value}`}
-                        style={{ objectFit: 'cover', objectPosition: 'center', width: '70%', height: '70%' }}
+                        style={{
+                            objectFit: 'cover',
+                            objectPosition: 'center',
+                            width: '70%',
+                            height: '70%',
+                            margin: 'auto',
+                            display: 'block'
+                        }}
                     ></img>
                 );
-            } else {
+            } else if (language === 'latex') {
                 return (
-                    <SyntaxHighlighter language={language} style={codeStyle}>
-                        {value}
+                    <div style={{ color: 'rgb(255, 255, 128, 0.8)', overflow: 'hidden', whiteSpace: "pre-wrap" }}>
+                        <Latex>{`$${value}$`}</Latex>
+                    </div>
+                );
+            } else {
+                const newValue = value.slice(0, -1);
+                return (
+                    <SyntaxHighlighter
+                        language={language}
+                        style={codeStyle}
+                        showLineNumbers='True'
+                        wrapLongLines='True'
+                        wrapLines='True'
+                        customStyle={{
+                            overflow: 'hidden',
+                            border: '1px solid gray',
+                            borderRadius: '0.5rem',
+                            backgroundColor: "rgba(0, 0, 0, 0.2)"
+                        }}
+                    >
+                        {newValue}
                     </SyntaxHighlighter>
                 );
             }
@@ -176,7 +207,7 @@ function Post(props) {
             <div className="post-file-content">
                 <ReactMarkdown
                     remarkPlugins={[gfm]}
-                    rehypePlugins={[rehypeRaw]} // Add rehypeKatex and rehypeRaw plugins
+                    rehypePlugins={[rehypeRaw]}
                     components={renderers}
                     children={markdownContent}
                 />

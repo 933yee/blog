@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const folderPath = path.join(__dirname, '.././dist/posts/markdown-posts'); // 替换为你的文件夹路径
+const folderPath = path.join(__dirname, '.././dist/posts/markdown-posts');
 
 fs.readdir(folderPath, (err, files) => {
     if (err) {
