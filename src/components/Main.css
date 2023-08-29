@@ -25,12 +25,12 @@
 
 .main-container .navbar {
     background-color: rgb(39, 40, 43);
-    height: 4rem;
+    height: 8%;
     width: 100%;
 }
 
 .main-container .contents {
-    height: 90%;
+    height: 92%;
     width: 75%;
 }
 

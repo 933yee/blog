@@ -3,7 +3,7 @@
     width: 100%;
     display: inline-flex;
     background-color: rgb(39, 40, 43);
-    border-radius: 1rem;
+    /* border-radius: 1rem; */
     border: 2px solid rgb(156, 156, 156);
     cursor: pointer;
     transition: transform 200ms, border 100ms;

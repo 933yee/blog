@@ -11,20 +11,41 @@
     overflow-x: hidden
 }
 
+.home-container .posts {
+    width: 100%;
+    height: 95%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    overflow-x: hidden
+}
+
+.home-container .post-grid-outer {
+    height: 35%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgb(62, 62, 62);
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
 .home-container .post-grid {
     /* the height of each post grid */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40%;
+    height: 100%;
     width: 90%;
-    border-bottom: 1px solid rgb(62, 62, 62);
     text-decoration: none;
 }
 
 .home-container .post {
     /* the height of each post  */
-    height: 80%;
+    height: 100%;
     width: 100%;
     /* margin: 2.5%; */
     display: flex;
@@ -34,27 +55,65 @@
     border-radius: 1rem;
 }
 
-
+.home-container .posts::-webkit-scrollbar,
 .home-container::-webkit-scrollbar {
     width: 12px;
 }
 
+.home-container .posts::-webkit-scrollbar-track,
 .home-container::-webkit-scrollbar-track {
     background-color: rgb(27, 27, 30);
 }
 
 /* Customize the scrollbar thumb */
+.home-container .posts::-webkit-scrollbar-thumb,
 .home-container::-webkit-scrollbar-thumb {
     background-color: #7a7a7a;
     border-radius: 5px;
 }
 
 /* Customize the scrollbar when hovering over it */
+.home-container .posts::-webkit-scrollbar-thumb:hover,
 .home-container::-webkit-scrollbar-thumb:hover {
     background-color: #959595;
 }
 
-.md-page {
-    height: 100%;
+.home-container .pagination {
     width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+    background-color: rgb(39, 40, 43);
+    border-radius: 0;
+}
+
+.home-container .pagination-button {
+    height: 1.7rem;
+    width: 1.7rem;
+    font-size: 1rem;
+    margin: 0 0.5rem;
+    cursor: pointer;
+    color: white;
+    background-color: rgb(39, 40, 43);
+    /* border-radius: 1rem; */
+    border: 1px solid rgb(156, 156, 156);
+    /* border-radius: 50%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Noto Sans', sans-serif;
+    transition: transform 200ms, border 100ms;
+}
+
+.home-container .pagination-button:hover {
+    border: 2px solid rgb(255, 255, 255);
+}
+
+.home-container .pagination-button.active {
+    /* border: 2px solid rgb(124, 137, 255); */
+    background-color: rgb(255, 255, 255);
+    color: black;
+    font-weight: 700;
 }
