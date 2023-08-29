@@ -1,21 +1,56 @@
 const fs = require('fs');
 const path = require('path');
+function generateFilesList() {
+    const folderPath = path.join(__dirname, '.././dist/posts/markdown-posts');
 
-const folderPath = path.join(__dirname, '.././dist/posts/markdown-posts');
+    function parseFrontmatter(content) {
+        const frontmatter = {};
+        const frontmatterRegex = /---\s*\n([\s\S]*?)\n?---\s*\n([\s\S]*)/;
 
-fs.readdir(folderPath, (err, files) => {
-    if (err) {
-        console.error(err);
-        return;
+        if (content.match(frontmatterRegex)) {
+            const [, frontmatterContent, postContent] = content.match(frontmatterRegex);
+            const frontmatterLines = frontmatterContent.trim().split('\n');
+
+            for (const line of frontmatterLines) {
+                const [key, value] = line.split(':').map(item => item.trim());
+                frontmatter[key] = value;
+            }
+
+            return { frontmatter, content: postContent.trim() };
+        }
+
+        return { frontmatter: {}, content };
     }
-    const fileNames = files.filter(file => file.endsWith('.md')).reverse();
-    const fileContent = `export default ${JSON.stringify(fileNames)};`;
 
-    fs.writeFile(path.join(__dirname, '../src/settings', 'files.js'), fileContent, err => {
+    fs.readdir(folderPath, (err, files) => {
         if (err) {
             console.error(err);
             return;
         }
-        console.log('File list generated successfully!');
+
+        const markdownFiles = files.filter(file => file.endsWith('.md')).reverse();
+        const postsData = {};
+
+        markdownFiles.forEach(fileName => {
+            const filePath = path.join(folderPath, fileName);
+            const fileContent = fs.readFileSync(filePath, 'utf-8');
+
+            const { frontmatter } = parseFrontmatter(fileContent);
+
+            const { title, subtitle, category, frontCover } = frontmatter;
+            postsData[fileName] = { title, subtitle, category, frontCover };
+        });
+
+        const fileContent = `export default ${JSON.stringify(postsData, null, 4)};`;
+
+        fs.writeFile(path.join(__dirname, '../src/settings', 'files.js'), fileContent, err => {
+            if (err) {
+                console.error(err);
+                return;
+            }
+            console.log('File list generated successfully!');
+        });
     });
-});
+}
+
+module.exports = generateFilesList;

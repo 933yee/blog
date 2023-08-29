@@ -9,6 +9,7 @@ import { AiFillHome, AiFillTags } from "react-icons/ai";
 import { BiCategoryAlt } from "react-icons/bi"; BsFillArchiveFill
 import { BsFillArchiveFill, BsFillPersonFill } from "react-icons/bs";
 import Home from 'components/Home.jsx'
+import Categories from 'components/Categories.jsx'
 
 import './Main.css';
 
@@ -103,7 +104,7 @@ function Main() {
                             </ReactMarkdown>
                         </div> */}
                         <Route path='/home' render={() => <div className='page'><Home></Home></div>} />
-                        <Route path='/categories' render={() => <div>categories</div>} />
+                        <Route path='/categories' render={() => <div><Categories></Categories></div>} />
                         <Route path='/tags' render={() => <div>tags</div>} />
                         <Route path='/archives' render={() => <div>archives</div>} />
                         <Route path='/about' render={() => <div className='about-text'>{`¯\\_(ツ)_/¯`}</div>} />

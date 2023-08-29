@@ -21,18 +21,17 @@ function Home() {
 
     useEffect(() => {
         setPosts(
-            files.map((fileName, index) => (
+            Object.keys(files).map((fileName, index) =>
                 <div className='post-grid-outer' key={index}>
                     <Link to={`/home/posts/${fileName}`} className='post-grid' >
                         <div className='post'>
                             <Post fileName={fileName} />
                         </div>
                     </Link>
-                </div>
-            ))
+                </div>)
         );
         setPage(
-            files.map((fileName, index) => (
+            Object.keys(files).map((fileName, index) => (
                 <Route key={index} exact path={`/home/posts/${fileName}`}
                     render={() => <Post fileName={fileName} index={index} />} />
             ))

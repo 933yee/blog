@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
 import { AiFillFolderOpen } from 'react-icons/ai';
 import { MdDateRange } from 'react-icons/md';
-import { local } from './settings.js';
+import { local } from 'settings/settings.js';
 import rehypeRaw from 'rehype-raw';
 import ReactPlayer from 'react-player';
 import './Post.css';

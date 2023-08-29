@@ -4,6 +4,7 @@ const srcPath = path.resolve(__dirname, 'src');
 const distPath = path.resolve(__dirname, 'dist');
 
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const generateFilesList = require('./prebuild_scripts/generateFilesList.js');
 
 const htmlPlugin = new HtmlWebPackPlugin({
     template: "./index.html",
@@ -15,7 +16,6 @@ const runWatchMarkdownScript = {
         compiler.hooks.done.tap('RunWatchMarkdownPlugin', (stats) => {
             const runWatchMarkdownCommand = 'node ./prebuild_scripts/watchMarkdown.js';
 
-            // 执行脚本
             const childProcess = require('child_process');
             childProcess.exec(runWatchMarkdownCommand, (err, stdout, stderr) => {
                 if (err) {
@@ -98,16 +98,7 @@ module.exports = {
         port: 7070,
         historyApiFallback: true,
         before: () => {
-            const generateFilesListCommand = 'node ./prebuild_scripts/generateFilesList.js';
-
-            const childProcess = require('child_process');
-            childProcess.exec(generateFilesListCommand, (err, stdout, stderr) => {
-                if (err) {
-                    console.error(err);
-                } else {
-                    console.log(stdout);
-                }
-            });
+            generateFilesList();
         }
     },
     devtool: 'cheap-source-map'
