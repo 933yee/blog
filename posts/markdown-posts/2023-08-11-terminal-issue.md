@@ -2,7 +2,7 @@
 date: 2023-08-11
 title: Linux/WSL Auto Config Issue
 subtitle: path setting
-category: technique 
+category: layer1 
 frontCover: study.png
 ---
 
