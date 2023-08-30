@@ -10,23 +10,25 @@
 .categories-container .category-layer1 {
     margin-top: 3rem;
     padding-left: 3rem;
-    padding-top: 1rem;
     padding-bottom: 1rem;
-    width: 80%;
-    /* border: 2px solid white; */
-
 }
 
 .categories-container .category-layer2 {
+    margin-top: 1rem;
     padding-left: 3rem;
+    /* padding-bottom: 1rem; */
 
 }
 
 .categories-container .category-layer3 {
+    margin-top: 1rem;
     padding-left: 3rem;
+    /* padding-bottom: 1rem; */
 
 }
 
 .categories-container .filenames {
+    margin-top: 1rem;
     padding-left: 3rem;
+    /* padding-bottom: 1rem; */
 }

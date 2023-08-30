@@ -10,19 +10,27 @@ import './Categories.css';
 function buildCategory(organizedData, categoryList, index, filename) {
     if (categoryList.length == index + 1) {
         if (!organizedData[categoryList[index]]) {
-            organizedData[categoryList[index]] = [];
+            organizedData[categoryList[index]] = { 'files': [] }
         }
-        organizedData[categoryList[index]].push(filename);
+        organizedData[categoryList[index]]['files'].push(filename);
     } else {
         if (!organizedData[categoryList[index]]) {
-            organizedData[categoryList[index]] = {};
+            organizedData[categoryList[index]] = { 'files': [] };
         }
         buildCategory(organizedData[categoryList[index]], categoryList, index + 1, filename);
     }
 
 }
 
-function displayCategory(organizedData, layer) {
+
+
+function displayCategory(organizedData, layer, dropdownButtonStates, setDropdownButtonStates) {
+    const handleCategoryFolderDropdwonButtonClick = (item) => {
+        setDropdownButtonStates(prevState => ({
+            ...prevState,
+            [item]: !prevState[item]
+        }));
+    }
     if (Array.isArray(organizedData)) {
         return (
             <div className='filenames'>
@@ -37,7 +45,7 @@ function displayCategory(organizedData, layer) {
         )
     } else {
         return (
-            <div className={`category-layer${layer}`}>
+            <div style={{ width: "100%", height: "100%" }}>
                 {
                     Object.keys(organizedData).map((item, index) => {
                         let folderIcon;
@@ -46,12 +54,13 @@ function displayCategory(organizedData, layer) {
                         else if (layer == 3) folderIcon = <i className="fa-regular fa-folder" style={{ paddingRight: '0.5rem' }}></i>;
 
                         return (
-                            <div key={index}>
-                                <div>
-                                    {folderIcon}
-                                    {item}
-                                </div>
-                                {displayCategory(organizedData[`${item}`], layer + 1)}
+                            <div key={index} className={`category-layer${layer}`}>
+                                {item == 'files' ? '' :
+                                    <div onClick={() => handleCategoryFolderDropdwonButtonClick(item)}>
+                                        {folderIcon}
+                                        {item}
+                                    </div>}
+                                {(item == 'files' || dropdownButtonStates[item]) && displayCategory(organizedData[item], layer + 1, dropdownButtonStates, setDropdownButtonStates)}
                             </div>
                         )
                     })
@@ -65,20 +74,25 @@ function displayCategory(organizedData, layer) {
 <i className="fa-regular fa-folder" style={{ paddingRight: '0.5rem' }}></i> */}
 
 function Categories() {
+    const [dropdownButtonStates, setDropdownButtonStates] = useState({});
     const getOrganizedData = () => {
         const organizedData = {};
         Object.keys(files).map(filename => {
             const entry = files[filename];
             const category = entry.category;
             buildCategory(organizedData, category.split(', '), 0, filename);
-
         })
-        console.log(organizedData)
+        useEffect(() => {
+            const initialDropdownStates = {};
+            Object.keys(organizedData).forEach(category => {
+                initialDropdownStates[category] = false;
+            });
+            setDropdownButtonStates(initialDropdownStates);
+        }, []);
+        // console.log(organizedData)
 
         // console.log(displayCategory(organizedData, 0))
-        return (
-            displayCategory(organizedData, 1)
-        )
+        return displayCategory(organizedData, 1, dropdownButtonStates, setDropdownButtonStates);
     }
     return (
         <div className='categories-container'>

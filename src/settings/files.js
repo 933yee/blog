@@ -8,7 +8,7 @@ export default {
     "2023-08-11-terminal-issue.md": {
         "title": "Linux/WSL Auto Config Issue",
         "subtitle": "path setting",
-        "category": "technique",
+        "category": "layer1",
         "frontCover": "study.png"
     },
     "2023-08-10-git-delete-commits.md": {
