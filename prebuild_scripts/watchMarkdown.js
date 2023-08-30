@@ -11,3 +11,4 @@ const watcher = chokidar.watch(folderPath, {
 
 watcher.on('add', generateFilesList);
 watcher.on('unlink', generateFilesList);
+watcher.on('change', generateFilesList);

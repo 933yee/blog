@@ -2,7 +2,7 @@ export default {
     "2023-08-19-cp-note.md": {
         "title": "Competitive Programming note",
         "subtitle": "basic",
-        "category": "technique",
+        "category": "layer1, layer2, layer3",
         "frontCover": "study.png"
     },
     "2023-08-11-terminal-issue.md": {

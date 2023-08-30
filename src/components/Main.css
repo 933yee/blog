@@ -32,6 +32,26 @@
 .main-container .contents {
     height: 92%;
     width: 75%;
+    overflow-y: auto;
+}
+
+.main-container .contents::-webkit-scrollbar {
+    width: 12px;
+}
+
+.main-container .contents::-webkit-scrollbar-track {
+    background-color: rgb(27, 27, 30);
+}
+
+/* Customize the scrollbar thumb */
+.main-container .contents::-webkit-scrollbar-thumb {
+    background-color: #7a7a7a;
+    border-radius: 5px;
+}
+
+/* Customize the scrollbar when hovering over it */
+.main-container .contents::-webkit-scrollbar-thumb:hover {
+    background-color: #959595;
 }
 
 .main-container .page {

@@ -1,3 +1,32 @@
+.categories-container {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    width: 100%;
+    height: 100%;
+}
+
 .categories-container .category-layer1 {
-    font-size: 2rem;
+    margin-top: 3rem;
+    padding-left: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    width: 80%;
+    /* border: 2px solid white; */
+
+}
+
+.categories-container .category-layer2 {
+    padding-left: 3rem;
+
+}
+
+.categories-container .category-layer3 {
+    padding-left: 3rem;
+
+}
+
+.categories-container .filenames {
+    padding-left: 3rem;
 }
