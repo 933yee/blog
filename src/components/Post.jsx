@@ -16,13 +16,13 @@ const urlHostname = window.location.hostname;
 const urlOrigin = window.location.origin;
 
 const postImagesBaseUrl = (urlHostname == "localhost")
-    ? `${window.location.origin}/posts/post-images/`
+    ? `${urlOrigin}/posts/post-images/`
     : 'https://raw.githubusercontent.com/933yee/933yee.github.io/gh-pages/posts/post-images/';
 const postsBaseUrl = (urlHostname == "localhost")
-    ? `${window.location.origin}/posts/markdown-posts/`
+    ? `${urlOrigin}/posts/markdown-posts/`
     : 'https://raw.githubusercontent.com/933yee/933yee.github.io/gh-pages/posts/markdown-posts/';
 const frontCoverBaseUrl = (urlHostname == "localhost")
-    ? `${window.location.origin}/posts/front-cover/`
+    ? `${urlOrigin}/posts/front-cover/`
     : 'https://raw.githubusercontent.com/933yee/933yee.github.io/gh-pages/posts/front-cover/';
 
 const defaultImagePath = `${frontCoverBaseUrl}default-image.png`;
