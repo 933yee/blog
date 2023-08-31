@@ -9,7 +9,7 @@ export default {
     "2023-08-11-terminal-issue.md": {
         "title": "Linux/WSL Auto Config Issue",
         "subtitle": "path setting",
-        "category": "layer1",
+        "category": "layer1, issue",
         "frontCover": "study.png",
         "tag": "linux, issue"
     },
