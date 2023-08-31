@@ -23,6 +23,7 @@
 
 .categories-container .category-text {
     cursor: pointer;
+    text-transform: capitalize;
 }
 
 .categories-container .category-indent {

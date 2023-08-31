@@ -5,11 +5,15 @@ import {
     Route,
     Link
 } from 'react-router-dom';
+
 import { AiFillFolderOpen, AiOutlineFolder } from "react-icons/ai";
 import { SlArrowRight } from "react-icons/sl";
-import { TfiLayoutLineSolid } from "react-icons/tfi";
+
 import './Categories.css';
 import { CSSTransition } from 'react-transition-group';
+import { updateFolderStates } from 'states/actions.js';
+import { connect, useDispatch } from 'react-redux';
+
 
 function buildCategory(organizedData, categoryList, index, filename) {
     if (categoryList.length == index + 1) {
@@ -28,13 +32,13 @@ function buildCategory(organizedData, categoryList, index, filename) {
 
 
 
-function displayCategory(organizedData, layer, dropdownButtonStates, setDropdownButtonStates) {
+function displayCategory(organizedData, layer, folderIsOpen, dispatch) {
     const url = window.location.origin;
     const handleCategoryFolderDropdwonButtonClick = (item) => {
-        setDropdownButtonStates(prevState => ({
-            ...prevState,
-            [item]: !prevState[item]
-        }));
+        dispatch(updateFolderStates({
+            ...folderIsOpen,
+            [item]: !folderIsOpen[item]
+        }))
     }
     if (Array.isArray(organizedData)) { // is file
         return (
@@ -57,28 +61,28 @@ function displayCategory(organizedData, layer, dropdownButtonStates, setDropdown
                         if (item == 'files') {
                             return (
                                 <div key={index}>
-                                    {displayCategory(organizedData[item], layer + 1, dropdownButtonStates, setDropdownButtonStates)}
+                                    {displayCategory(organizedData[item], layer + 1, folderIsOpen, dispatch)}
                                 </div>
                             )
                         } else {
                             return (
                                 <div key={index} className={`category-layer category-layer${layer}`}>
                                     <span onClick={() => handleCategoryFolderDropdwonButtonClick(item)} className='category-text'>
-                                        {dropdownButtonStates[item]
+                                        {folderIsOpen[item]
                                             ? <AiFillFolderOpen className="folder-icon"></AiFillFolderOpen>
                                             : <AiOutlineFolder className="folder-icon"></AiOutlineFolder>
                                         }
                                         {item}
-                                        <SlArrowRight className={`folder-state-icon ${dropdownButtonStates[item] ? 'rotated' : ''}`}></SlArrowRight>
+                                        <SlArrowRight className={`folder-state-icon ${folderIsOpen[item] ? 'rotated' : ''}`}></SlArrowRight>
                                     </span>
                                     <CSSTransition
-                                        in={dropdownButtonStates[item]}
+                                        in={folderIsOpen[item]}
                                         timeout={300}
                                         classNames="fade"
                                         unmountOnExit
                                     >
                                         <div className='category-indent'>
-                                            {displayCategory(organizedData[item], layer + 1, dropdownButtonStates, setDropdownButtonStates)}
+                                            {displayCategory(organizedData[item], layer + 1, folderIsOpen, dispatch)}
                                         </div>
                                     </CSSTransition>
                                 </div>
@@ -91,8 +95,9 @@ function displayCategory(organizedData, layer, dropdownButtonStates, setDropdown
     }
 }
 
-function Categories() {
-    const [dropdownButtonStates, setDropdownButtonStates] = useState({});
+function Categories(props) {
+    const dispatch = useDispatch();
+    const { folderIsOpen } = props;
     const getOrganizedData = () => {
         const organizedData = {};
         Object.keys(files).map(filename => {
@@ -105,12 +110,11 @@ function Categories() {
             Object.keys(organizedData).forEach(category => {
                 initialDropdownStates[category] = false;
             });
-            setDropdownButtonStates(initialDropdownStates);
+            if (Object.keys(folderIsOpen).length === 0) {
+                dispatch(updateFolderStates(initialDropdownStates));
+            }
         }, []);
-        // console.log(organizedData)
-
-        // console.log(displayCategory(organizedData, 0))
-        return displayCategory(organizedData, 1, dropdownButtonStates, setDropdownButtonStates);
+        return displayCategory(organizedData, 1, folderIsOpen, dispatch);
     }
     return (
         <div className='categories-container'>
@@ -121,4 +125,8 @@ function Categories() {
     )
 }
 
-export default Categories;
+export default connect((state) => {
+    return {
+        ...state.folderStates
+    }
+})(Categories);
