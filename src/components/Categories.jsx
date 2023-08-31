@@ -5,6 +5,7 @@ import {
     Route,
     Link
 } from 'react-router-dom';
+import { AiFillFolderOpen } from "react-icons/ai";
 import './Categories.css';
 
 function buildCategory(organizedData, categoryList, index, filename) {
@@ -49,15 +50,11 @@ function displayCategory(organizedData, layer, dropdownButtonStates, setDropdown
                 {
                     Object.keys(organizedData).map((item, index) => {
                         let folderIcon;
-                        if (layer == 1) folderIcon = <i className="fa-regular fa-folder-open" style={{ paddingRight: '0.5rem' }}></i>;
-                        else if (layer == 2) folderIcon = <i className="fa-regular fa-folder-closed" style={{ paddingRight: '0.5rem' }}></i>
-                        else if (layer == 3) folderIcon = <i className="fa-regular fa-folder" style={{ paddingRight: '0.5rem' }}></i>;
-
                         return (
                             <div key={index} className={`category-layer${layer}`}>
                                 {item == 'files' ? '' :
                                     <div onClick={() => handleCategoryFolderDropdwonButtonClick(item)}>
-                                        {folderIcon}
+                                        {<AiFillFolderOpen className="folder-icon"></AiFillFolderOpen>}
                                         {item}
                                     </div>}
                                 {(item == 'files' || dropdownButtonStates[item]) && displayCategory(organizedData[item], layer + 1, dropdownButtonStates, setDropdownButtonStates)}
@@ -69,9 +66,6 @@ function displayCategory(organizedData, layer, dropdownButtonStates, setDropdown
         )
     }
 }
-{/* <i className="fa-regular fa-folder-open" style={{ paddingRight: '0.5rem' }}></i>
-<i className="fa-regular fa-folder-closed" style={{ paddingRight: '0.5rem' }}></i>
-<i className="fa-regular fa-folder" style={{ paddingRight: '0.5rem' }}></i> */}
 
 function Categories() {
     const [dropdownButtonStates, setDropdownButtonStates] = useState({});

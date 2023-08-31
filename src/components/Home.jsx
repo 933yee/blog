@@ -7,6 +7,7 @@ import {
     Link
 } from 'react-router-dom';
 import './Home.css';
+import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from 'react-icons/md';
 
 function Home() {
     const [posts, setPosts] = useState([]);
@@ -51,7 +52,7 @@ function Home() {
                 key={0}
                 onClick={() => handlePageChange(1)
                 }>
-                <i className="fa-solid fa-angles-left"></i>
+                <MdKeyboardDoubleArrowLeft></MdKeyboardDoubleArrowLeft>
             </div>)
         if (currentPage <= halfOfPaginationButtonDisplayCount) {
             for (let i = 1; i <= paginationCount && i <= paginationButtonDisplayCount; i++) {
@@ -94,7 +95,7 @@ function Home() {
                 key={paginationCount + 1}
                 onClick={() => handlePageChange(paginationCount)
                 }>
-                <i className="fa-solid fa-angles-right"></i>
+                <MdKeyboardDoubleArrowRight></MdKeyboardDoubleArrowRight>
             </div>)
 
         return pagination;

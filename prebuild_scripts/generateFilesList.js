@@ -37,8 +37,8 @@ function generateFilesList() {
 
             const { frontmatter } = parseFrontmatter(fileContent);
 
-            const { title, subtitle, category, frontCover } = frontmatter;
-            postsData[fileName] = { title, subtitle, category, frontCover };
+            const { title, subtitle, category, frontCover, tag } = frontmatter;
+            postsData[fileName] = { title, subtitle, category, frontCover, tag };
         });
 
         const fileContent = `export default ${JSON.stringify(postsData, null, 4)};`;

@@ -10,7 +10,7 @@ import { BiCategoryAlt } from "react-icons/bi"; BsFillArchiveFill
 import { BsFillArchiveFill, BsFillPersonFill } from "react-icons/bs";
 import Home from 'components/Home.jsx'
 import Categories from 'components/Categories.jsx'
-
+import { FaFacebook, FaGithub, FaYoutube, FaEnvelope, FaSourcetree } from "react-icons/fa";
 import './Main.css';
 
 
@@ -76,22 +76,22 @@ function Main() {
                             href='https://www.facebook.com/profile.php?id=100003747192616'
                             className='contact-item'
                         >
-                            <i className='fa-brands fa-facebook'></i>
+                            <FaFacebook></FaFacebook>
                         </a>
                         <a href='https://github.com/933yee' className='contact-item'>
-                            <i className='fa-brands fa-github'></i>
+                            <FaGithub></FaGithub>
                         </a>
                         <a href='mailto:kevins30102@yahoo.com' className='contact-item'>
-                            <i className='fa-solid fa-envelope'></i>
+                            <FaEnvelope></FaEnvelope>
                         </a>
                         <a
                             href='https://www.youtube.com/channel/UCSbMujwFekgRcjlzJcKIj8g'
                             className='contact-item'
                         >
-                            <i className='fa-brands fa-youtube'></i>
+                            <FaYoutube></FaYoutube>
                         </a>
                         <a href='https://github.com/933yee/blog' className='contact-item'>
-                            <i className='fa-brands fa-sourcetree'></i>
+                            <FaSourcetree></FaSourcetree>
                         </a>
                     </div>
                 </div>
