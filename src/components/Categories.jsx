@@ -6,8 +6,9 @@ import {
     Link
 } from 'react-router-dom';
 
-import { AiFillFolderOpen, AiOutlineFolder } from "react-icons/ai";
+import { AiFillFolderOpen, AiOutlineFolder, AiOutlineProfile } from "react-icons/ai";
 import { SlArrowRight } from "react-icons/sl";
+import { CiSignpostR1 } from "react-icons/ci";
 
 import './Categories.css';
 import { CSSTransition } from 'react-transition-group';
@@ -41,10 +42,12 @@ function displayCategory(organizedData, layer, folderIsOpen, dispatch) {
     }
     if (Array.isArray(organizedData)) { // is file
         return (
-            <div className='filenames'>
+            <div>
                 {organizedData.map((filename, index) => (
                     <div key={index}>
-                        <a href={`${urlOrigin}/#/home/posts/${filename}`}>
+                        <a href={`${urlOrigin}/#/home/posts/${filename}`} className='filename'>
+
+                            <AiOutlineProfile style={{ marginRight: '0.5rem', color: 'white' }}></AiOutlineProfile>
                             {files[filename]['title']}
                         </a>
                     </div>

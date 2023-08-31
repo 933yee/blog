@@ -24,6 +24,11 @@
 .categories-container .category-text {
     cursor: pointer;
     text-transform: capitalize;
+    transition: opacity 100ms;
+}
+
+.categories-container .category-text:hover {
+    opacity: 0.5;
 }
 
 .categories-container .category-indent {
@@ -57,6 +62,7 @@
 .categories-container .categories-content {
     margin-left: 5rem;
     margin-top: 3rem;
+    padding-bottom: 5rem;
 }
 
 .categories-container .category-layer {
@@ -64,7 +70,19 @@
 }
 
 .categories-container .category-layer1 {
-    border: 2px solid gray;
+    border: 1px solid rgb(150, 168, 241);
     padding: 1rem;
     width: 90%;
+    color: rgb(255, 255, 255, 0.8);
+    ;
+    /* color: rgba(205, 129, 81, 1); */
+}
+
+.categories-container .filename {
+    text-decoration: none;
+    color: rgb(77, 141, 219);
+}
+
+.categories-container .filename:hover {
+    color: rgba(0, 166, 255, 0.5);
 }
