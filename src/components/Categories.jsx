@@ -13,7 +13,7 @@ import './Categories.css';
 import { CSSTransition } from 'react-transition-group';
 import { updateFolderStates } from 'states/actions.js';
 import { connect, useDispatch } from 'react-redux';
-
+const urlOrigin = window.location.origin;
 
 function buildCategory(organizedData, categoryList, index, filename) {
     if (categoryList.length == index + 1) {
@@ -27,13 +27,12 @@ function buildCategory(organizedData, categoryList, index, filename) {
         }
         buildCategory(organizedData[categoryList[index]], categoryList, index + 1, filename);
     }
-
 }
 
 
 
 function displayCategory(organizedData, layer, folderIsOpen, dispatch) {
-    const url = window.location.origin;
+
     const handleCategoryFolderDropdwonButtonClick = (item) => {
         dispatch(updateFolderStates({
             ...folderIsOpen,
@@ -45,7 +44,7 @@ function displayCategory(organizedData, layer, folderIsOpen, dispatch) {
             <div className='filenames'>
                 {organizedData.map((filename, index) => (
                     <div key={index}>
-                        <a href={`${url}/#/home/posts/${filename}`}>
+                        <a href={`${urlOrigin}/#/home/posts/${filename}`}>
                             {files[filename]['title']}
                         </a>
                     </div>

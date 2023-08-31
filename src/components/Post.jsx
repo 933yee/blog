@@ -3,7 +3,6 @@ import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
 import { AiFillFolderOpen } from 'react-icons/ai';
 import { MdDateRange } from 'react-icons/md';
-import { local } from 'settings/settings.js';
 import rehypeRaw from 'rehype-raw';
 import ReactPlayer from 'react-player';
 import './Post.css';
@@ -13,14 +12,17 @@ import { dracula, twilight, nightOwl, oneDark, tomorrow } from 'react-syntax-hig
 const codeStyle = tomorrow;
 const Latex = require('react-latex');
 // local or github page side
-const postImagesBaseUrl = local
-    ? 'http://localhost:7070/posts/post-images/'
+const urlHostname = window.location.hostname;
+const urlOrigin = window.location.origin;
+
+const postImagesBaseUrl = (urlHostname == "localhost")
+    ? `${window.location.origin}/posts/post-images/`
     : 'https://raw.githubusercontent.com/933yee/933yee.github.io/gh-pages/posts/post-images/';
-const postsBaseUrl = local
-    ? 'http://localhost:7070/posts/markdown-posts/'
+const postsBaseUrl = (urlHostname == "localhost")
+    ? `${window.location.origin}/posts/markdown-posts/`
     : 'https://raw.githubusercontent.com/933yee/933yee.github.io/gh-pages/posts/markdown-posts/';
-const frontCoverBaseUrl = local
-    ? 'http://localhost:7070/posts/front-cover/'
+const frontCoverBaseUrl = (urlHostname == "localhost")
+    ? `${window.location.origin}/posts/front-cover/`
     : 'https://raw.githubusercontent.com/933yee/933yee.github.io/gh-pages/posts/front-cover/';
 
 const defaultImagePath = `${frontCoverBaseUrl}default-image.png`;
