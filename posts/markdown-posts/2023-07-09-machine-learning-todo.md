@@ -4,6 +4,7 @@ title: Machine Learning Learning List
 subtitle: Machine learning todo list
 category: personal note
 frontCover: study.png
+tag: ML
 ---
 
 1. 簡單線性回歸 Simple Linear Regression

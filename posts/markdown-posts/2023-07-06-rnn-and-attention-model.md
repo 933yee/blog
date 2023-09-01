@@ -4,6 +4,7 @@ title: RNN & Attention Model
 subtitle: [CGV/MIS] 2023 Summer Internship Entrance Test for Project Students
 category: personal note
 frontCover: study.png
+tag: ML, RNN
 ---
 
 ## Reccurent Neural Networks (RNN) Basics

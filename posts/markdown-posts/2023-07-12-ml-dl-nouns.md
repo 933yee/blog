@@ -4,6 +4,7 @@ title: ML & DL nouns
 subtitle: basic nouns explanation
 category: personal note 
 frontCover: study.png
+tag: ML, DL
 ---
 ```youtube
 https://www.youtube.com/watch?v=FjizPOgzplA&ab_channel=%E5%91%A8%E9%81%A0%E5%90%8C

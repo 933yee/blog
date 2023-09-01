@@ -4,6 +4,7 @@ title: ML & DL operations
 subtitle: basic operations explanation
 category: personal note 
 frontCover: study.png
+tag: ML, DL
 ---
 ## Dataset & DataLoader
 

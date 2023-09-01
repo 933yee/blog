@@ -4,6 +4,7 @@ title: Introduction of machine learning
 subtitle: [CGV/MIS] 2023 Summer Internship Entrance Test for Project Students
 category: personal note
 frontCover: study.png
+tag: ML
 ---
 
 ## Inductive bias

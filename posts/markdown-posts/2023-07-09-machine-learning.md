@@ -4,6 +4,7 @@ title: Machine Learning Python Practice
 subtitle: Machine learning basic practice
 category: personal note
 frontCover: study.png
+tag: ML
 ---
 ```citation
 最近看了一堆 ML 理論，完全沒有實作，所以想先從簡單的下手。

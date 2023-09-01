@@ -4,6 +4,7 @@ title: Git delete commit history
 subtitle: protect your privacy
 category: technique 
 frontCover: study.png
+tag: git
 ---
 
 
