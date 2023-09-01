@@ -4,3 +4,16 @@ export function updateFolderStates(nextStates) {
         nextStates
     };
 }
+
+export function expandFolderStates() {
+    return {
+        type: '@EXPAND/FOLDER_STATES',
+    };
+}
+
+export function collapseFolderStates() {
+    return {
+        type: '@COLLAPSE/FOLDER_STATES',
+    };
+}
+

@@ -6,13 +6,13 @@ import {
     Link
 } from 'react-router-dom';
 
-import { AiFillFolderOpen, AiOutlineFolder, AiOutlineProfile } from "react-icons/ai";
+import { AiFillFolderOpen, AiTwotoneFolder, AiOutlineProfile } from "react-icons/ai";
 import { SlArrowRight } from "react-icons/sl";
-import { CiSignpostR1 } from "react-icons/ci";
-
+import { VscExpandAll, VscCollapseAll } from "react-icons/vsc";
 import './Categories.css';
 import { CSSTransition } from 'react-transition-group';
-import { updateFolderStates } from 'states/actions.js';
+import { updateFolderStates, expandFolderStates, collapseFolderStates } from 'states/actions.js';
+
 import { connect, useDispatch } from 'react-redux';
 const urlOrigin = window.location.origin;
 
@@ -72,7 +72,7 @@ function displayCategory(organizedData, layer, folderIsOpen, dispatch) {
                                     <span onClick={() => handleCategoryFolderDropdwonButtonClick(item)} className='category-text'>
                                         {folderIsOpen[item]
                                             ? <AiFillFolderOpen className="folder-icon"></AiFillFolderOpen>
-                                            : <AiOutlineFolder className="folder-icon"></AiOutlineFolder>
+                                            : <AiTwotoneFolder className="folder-icon"></AiTwotoneFolder>
                                         }
                                         {item}
                                         <SlArrowRight className={`folder-state-icon ${folderIsOpen[item] ? 'rotated' : ''}`}></SlArrowRight>
@@ -96,10 +96,11 @@ function displayCategory(organizedData, layer, folderIsOpen, dispatch) {
         )
     }
 }
-
 function Categories(props) {
     const dispatch = useDispatch();
     const { folderIsOpen } = props;
+    const [shouldRender, setShouldRender] = useState(true);
+
     const getOrganizedData = () => {
         const organizedData = {};
         Object.keys(files).map(filename => {
@@ -107,9 +108,21 @@ function Categories(props) {
             const category = entry.category;
             buildCategory(organizedData, category.split(', '), 0, filename);
         })
+        function categoriesTraversal(obj) {
+            let keys = []
+            for (let key in obj) {
+                if (key != "files") {
+                    keys.push(key);
+                    if (typeof obj[key] === 'object') {
+                        keys = keys.concat(categoriesTraversal(obj[key]));
+                    }
+                }
+            }
+            return keys;
+        }
         useEffect(() => {
             const initialDropdownStates = {};
-            Object.keys(organizedData).forEach(category => {
+            categoriesTraversal(organizedData).forEach(category => {
                 initialDropdownStates[category] = false;
             });
             if (Object.keys(folderIsOpen).length === 0) {
@@ -118,9 +131,24 @@ function Categories(props) {
         }, []);
         return displayCategory(organizedData, 1, folderIsOpen, dispatch);
     }
+    const handleExpandButtonClick = () => {
+        dispatch(expandFolderStates())
+        setShouldRender(!shouldRender);
+    }
+    const handleCollapseButtonClick = () => {
+        dispatch(collapseFolderStates())
+        setShouldRender(!shouldRender);
+    }
+
     return (
         <div className='categories-container'>
             <div className='categories-content'>
+                <span className='expand-button' onClick={handleExpandButtonClick}>
+                    <VscExpandAll /> Expand
+                </span>
+                <span className='collapse-button' onClick={handleCollapseButtonClick}>
+                    <VscCollapseAll /> Collapse
+                </span>
                 {getOrganizedData()}
             </div>
         </div>

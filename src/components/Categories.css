@@ -63,6 +63,7 @@
     margin-left: 5rem;
     margin-top: 3rem;
     padding-bottom: 5rem;
+    width: 80%;
 }
 
 .categories-container .category-layer {
@@ -72,9 +73,8 @@
 .categories-container .category-layer1 {
     border: 1px solid rgb(150, 168, 241);
     padding: 1rem;
-    width: 90%;
+    width: 100%;
     color: rgb(255, 255, 255, 0.8);
-    ;
     /* color: rgba(205, 129, 81, 1); */
 }
 
@@ -85,4 +85,19 @@
 
 .categories-container .filename:hover {
     color: rgba(0, 166, 255, 0.5);
+}
+
+.categories-container .expand-button {
+    cursor: pointer;
+}
+
+.categories-container .collapse-button {
+    cursor: pointer;
+    margin-left: 1rem;
+    color: white;
+}
+
+.categories-container .expand-button:hover,
+.categories-container .collapse-button:hover {
+    color: rgba(255, 255, 255, 0.7);
 }
