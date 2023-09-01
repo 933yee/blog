@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import files from 'settings/files.js';
-import {
-    BrowserRouter as Router,
-    Route,
-    Link
-} from 'react-router-dom';
 
 import { AiFillFolderOpen, AiTwotoneFolder, AiOutlineProfile } from "react-icons/ai";
 import { SlArrowRight } from "react-icons/sl";
@@ -29,8 +24,6 @@ function buildCategory(organizedData, categoryList, index, filename) {
         buildCategory(organizedData[categoryList[index]], categoryList, index + 1, filename);
     }
 }
-
-
 
 function displayCategory(organizedData, layer, folderIsOpen, dispatch) {
 
@@ -98,7 +91,8 @@ function displayCategory(organizedData, layer, folderIsOpen, dispatch) {
 }
 function Categories(props) {
     const dispatch = useDispatch();
-    const { folderIsOpen } = props;
+    const { folderIsOpen, search } = props;
+    const searchText = search.toLowerCase();
     const [shouldRender, setShouldRender] = useState(true);
 
     const getOrganizedData = () => {
@@ -106,7 +100,19 @@ function Categories(props) {
         Object.keys(files).map(filename => {
             const entry = files[filename];
             const category = entry.category;
-            buildCategory(organizedData, category.split(', '), 0, filename);
+            const title = files[filename]['title'].toLowerCase()
+            const splittedCategory = category.split(', ');
+            if (title.toLowerCase().includes(searchText)) {
+                buildCategory(organizedData, splittedCategory, 0, filename);
+            } else {
+                for (let cat of splittedCategory) {
+                    if (cat.toLowerCase().includes(searchText)) {
+                        buildCategory(organizedData, splittedCategory, 0, filename);
+                        break;
+                    }
+                }
+            }
+
         })
         function categoriesTraversal(obj) {
             let keys = []
@@ -131,6 +137,11 @@ function Categories(props) {
         }, []);
         return displayCategory(organizedData, 1, folderIsOpen, dispatch);
     }
+    useEffect(() => {
+        handleExpandButtonClick()
+    }, [searchText])
+
+
     const handleExpandButtonClick = () => {
         dispatch(expandFolderStates())
         setShouldRender(!shouldRender);

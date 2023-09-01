@@ -5,20 +5,25 @@ import {
     Link
 } from 'react-router-dom';
 
-import { AiFillHome, AiFillTags } from "react-icons/ai";
-import { BiCategoryAlt } from "react-icons/bi"; BsFillArchiveFill
+import { AiFillHome, AiFillTags, AiOutlineSearch } from "react-icons/ai";
+import { BiCategoryAlt } from "react-icons/bi";
 import { BsFillArchiveFill, BsFillPersonFill } from "react-icons/bs";
+import { FaFacebook, FaGithub, FaYoutube, FaEnvelope, FaSourcetree } from "react-icons/fa";
+
 import Home from 'components/Home.jsx'
 import Categories from 'components/Categories.jsx'
-import { FaFacebook, FaGithub, FaYoutube, FaEnvelope, FaSourcetree } from "react-icons/fa";
+import Tags from 'components/Tags.jsx'
 import './Main.css';
 
 
 function Main() {
+    const [inputSearchText, setinputSearchText] = useState('');
     const handleClickHomepage = () => {
         window.location.href = '/';
     };
-
+    const handleInputSearchChange = (event) => {
+        setinputSearchText(event.target.value);
+    }
 
     return (
         <Router basename="/">
@@ -52,12 +57,12 @@ function Main() {
                                 categories
                             </div>
                         </Link>
-                        <Link to='/tags' className='item'>
+                        {/* <Link to='/tags' className='item'>
                             <div className='options-text'>
                                 <AiFillTags className='options-icon'></AiFillTags>
                                 tags
                             </div>
-                        </Link>
+                        </Link> */}
                         <Link to='/archives' className='item'>
                             <div className='options-text'>
                                 <BsFillArchiveFill className='options-icon'></BsFillArchiveFill>
@@ -97,21 +102,51 @@ function Main() {
                 </div>
                 <div className='right'>
                     <div className='navbar'>Home</div>
-                    <div className='contents'>
-                        {/* <div>
+                    <div style={{ display: 'flex', width: '100%', height: '92%' }}>
+                        <div className='contents'>
+                            {/* <div>
                             <ReactMarkdown remarkPlugins={[gfm]}>
                                 {markdownContent}
                             </ReactMarkdown>
                         </div> */}
-                        <Route path='/home' render={() => <div className='page'><Home></Home></div>} />
-                        <Route path='/categories' render={() => <div className='page'><Categories></Categories></div>} />
-                        <Route path='/tags' render={() => <div>tags</div>} />
-                        <Route path='/archives' render={() => <div>archives</div>} />
-                        <Route path='/about' render={() => <div className='about-text'>{`¯\\_(ツ)_/¯`}</div>} />
+                            <Route path='/home' render={() =>
+                                <div className='page'>
+                                    <Home search={inputSearchText}></Home>
+                                </div>}
+                            />
+                            <Route path='/categories' render={() =>
+                                <div className='page'>
+                                    <Categories search={inputSearchText}></Categories>
+                                </div>}
+                            />
+                            {/* <Route path='/tags' render={() => <div className='page'><Tags></Tags></div>} /> */}
+                            <Route path='/archives' render={() => <div>archives</div>} />
+                            <Route path='/about' render={() => <div className='about-text'>{`¯\\_(ツ)_/¯`}</div>} />
+                        </div>
+                        <div className='rightbar'>
+                            <div className='search'>
+                                <div>
+                                    <div className='search-text'>Search</div>
+                                    <input
+                                        type="text"
+                                        className='search-input'
+                                        placeholder='Type something...'
+                                        value={inputSearchText}
+                                        onChange={handleInputSearchChange}
+                                    />
+                                </div>
+                                <div className='search-icon'>
+                                    <AiOutlineSearch></AiOutlineSearch>
+                                </div>
+                            </div>
+                            <div className='tags'>
+                                Tags
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </Router>
+                </div >
+            </div >
+        </Router >
     );
 }
 

@@ -89,12 +89,14 @@
 
 .categories-container .expand-button {
     cursor: pointer;
+    transition: color 200ms;
 }
 
 .categories-container .collapse-button {
     cursor: pointer;
     margin-left: 1rem;
     color: white;
+    transition: color 200ms;
 }
 
 .categories-container .expand-button:hover,

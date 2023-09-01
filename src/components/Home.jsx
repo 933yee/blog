@@ -9,41 +9,60 @@ import {
 import './Home.css';
 import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from 'react-icons/md';
 
-function Home() {
+function Home(props) {
+    const searchText = props.search;
     const [posts, setPosts] = useState([]);
     const [page, setPage] = useState([]);
+    const [paginationCount, setPaginationCount] = useState()
+    const [currentPagination, setCurrentPagination] = useState();
     const [currentPage, setCurrentPage] = useState(1);
-    // <div className='post-grid' key={index} onClick={() => handleClick(index)}>
+
     const perpageSize = 7;
     const firstPost = (currentPage - 1) * perpageSize;
     const lastPost = currentPage * perpageSize;
-    const paginationCount = Math.ceil(posts.length / perpageSize);
     const paginationButtonDisplayCount = 5;
 
     useEffect(() => {
-        setPosts(
-            Object.keys(files).map((fileName, index) =>
-                <div className='post-grid-outer' key={index}>
-                    <Link to={`/home/posts/${fileName}`} className='post-grid' >
-                        <div className='post'>
-                            <Post fileName={fileName} />
+        setCurrentPage(1);
+
+        const nextPosts = (
+            Object.keys(files).map((fileName, index) => {
+                const title = files[fileName]['title'].toLowerCase();
+                const subtitle = files[fileName]['subtitle'].toLowerCase();
+                if (title.includes(searchText.toLowerCase()) || subtitle.includes(searchText.toLowerCase())) {
+                    return (
+                        <div className='post-grid-outer' key={index}>
+                            <Link to={`/home/posts/${fileName}`} className='post-grid' >
+                                <div className='post'>
+                                    <Post fileName={fileName} />
+                                </div>
+                            </Link>
                         </div>
-                    </Link>
-                </div>)
-        );
+                    )
+                }
+                return null;
+            }
+            )
+        ).filter(item => item !== null);
+        setPosts(nextPosts);
         setPage(
             Object.keys(files).map((fileName, index) => (
                 <Route key={index} exact path={`/home/posts/${fileName}`}
                     render={() => <Post fileName={fileName} index={index} />} />
             ))
         );
-    }, []);
+        setPaginationCount(Math.ceil(nextPosts.length / perpageSize))
+    }, [searchText]);
+
+    useEffect(() => {
+        setCurrentPagination(getCurrentPagination());
+    }, [currentPage, paginationCount]);
 
     const handlePageChange = (index) => {
         setCurrentPage(index)
     }
 
-    const getCurrentPagination = () => {
+    function getCurrentPagination() {
         let pagination = [];
         const halfOfPaginationButtonDisplayCount = Math.floor(paginationButtonDisplayCount / 2);
         pagination.push(
@@ -97,7 +116,6 @@ function Home() {
                 }>
                 <MdKeyboardDoubleArrowRight></MdKeyboardDoubleArrowRight>
             </div>)
-
         return pagination;
     }
 
@@ -109,7 +127,7 @@ function Home() {
                         {posts.slice(firstPost, lastPost)}
                     </div>
                     <div className='pagination'>
-                        {getCurrentPagination()}
+                        {currentPagination}
                     </div>
                 </div>
             } />
@@ -117,6 +135,5 @@ function Home() {
         </div>
     )
 }
-
 
 export default Home;
