@@ -122,7 +122,7 @@ function Home(props) {
     return (
         <div className='home-container'>
             <Route exact path='/home' render={() =>
-                <div style={{ height: '100%', width: '100%' }}>
+                <div style={{ height: '100%', width: '100%', display: 'flex', flexDirection: 'column' }}>
                     <div className='posts'>
                         {posts.slice(firstPost, lastPost)}
                     </div>
