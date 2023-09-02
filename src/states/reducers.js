@@ -23,7 +23,6 @@ export function folderStates(state = initFolderState, action) {
                 folderIsOpen: action.nextStates
             };
         case '@EXPAND/FOLDER_STATES':
-            console.log("EXPAND")
             const expandStates = state.folderIsOpen;
             updateAllFolderStates(expandStates, true);
             return {
@@ -31,7 +30,6 @@ export function folderStates(state = initFolderState, action) {
                 folderIsOpen: expandStates
             };
         case '@COLLAPSE/FOLDER_STATES':
-            console.log("COLLAPSE")
             const collapseStates = state.folderIsOpen;
             updateAllFolderStates(collapseStates, false);
             return {

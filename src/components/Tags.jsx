@@ -1,41 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import files from 'settings/files.js';
-import './tags.css';
+import './Tags.css';
 
 function Tags() {
-    const getOrganizedData = () => {
-        const organizedData = {};
-        Object.keys(files).map(filename => {
+    const [tagsList, setTagsList] = useState([]);
+    const urlOrigin = window.location.origin;
+    useEffect(() => {
+        const tagsSet = new Set();
+        Object.keys(files).forEach(filename => {
             const entry = files[filename];
-            const category = entry.category;
-            buildCategory(organizedData, category.split(', '), 0, filename);
-        })
-        function categoriesTraversal(obj) {
-            let keys = []
-            for (let key in obj) {
-                if (key != "files") {
-                    keys.push(key);
-                    if (typeof obj[key] === 'object') {
-                        keys = keys.concat(categoriesTraversal(obj[key]));
-                    }
-                }
-            }
-            return keys;
-        }
-        useEffect(() => {
-            const initialDropdownStates = {};
-            categoriesTraversal(organizedData).forEach(category => {
-                initialDropdownStates[category] = false;
+            const tags = entry.tag;
+            const splittedTag = tags.split(', ');
+            splittedTag.forEach(tag => {
+                tagsSet.add(tag);
             });
-            if (Object.keys(folderIsOpen).length === 0) {
-                dispatch(updateFolderStates(initialDropdownStates));
-            }
-        }, []);
-        return displayCategory(organizedData, 1, folderIsOpen, dispatch);
+        });
+        const uniqueTags = Array.from(tagsSet);
+        setTagsList(uniqueTags);
+    }, []);
+
+    const handleTagOnClick = (tag) => {
+        window.location.href = `${urlOrigin}/#/tags/${tag}`;
     }
+
+    const displayTags = () => {
+        return (tagsList).map((tag, index) => {
+            return (
+                <span className='tag' key={index} onClick={() => handleTagOnClick(tag)}>
+                    {`${tag}`}
+                </span>
+            );
+        })
+    }
+
     return (
         <div className='tags-container'>
-
+            {displayTags()}
         </div>
     )
 }

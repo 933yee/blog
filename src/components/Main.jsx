@@ -13,13 +13,14 @@ import { FaFacebook, FaGithub, FaYoutube, FaEnvelope, FaSourcetree } from "react
 import Home from 'components/Home.jsx'
 import Categories from 'components/Categories.jsx'
 import Tags from 'components/Tags.jsx'
+import TagPage from 'components/TagPage.jsx'
 import './Main.css';
 
 
 function Main() {
     const [inputSearchText, setinputSearchText] = useState('');
     const handleClickHomepage = () => {
-        window.location.href = '/';
+        window.location.href = '/#';
     };
     const handleInputSearchChange = (event) => {
         setinputSearchText(event.target.value);
@@ -119,7 +120,11 @@ function Main() {
                                     <Categories search={inputSearchText}></Categories>
                                 </div>}
                             />
-                            {/* <Route path='/tags' render={() => <div className='page'><Tags></Tags></div>} /> */}
+                            <Route path='/tags' render={() =>
+                                <div className='page'>
+                                    <TagPage></TagPage>
+                                </div>}
+                            />
                             <Route path='/archives' render={() => <div>archives</div>} />
                             <Route path='/about' render={() => <div className='about-text'>{`¯\\_(ツ)_/¯`}</div>} />
                         </div>
@@ -140,7 +145,8 @@ function Main() {
                                 </div>
                             </div>
                             <div className='tags'>
-                                Tags
+                                <AiFillTags style={{ marginRight: "5px" }}></AiFillTags>Tags
+                                <Tags></Tags>
                             </div>
                         </div>
                     </div>
