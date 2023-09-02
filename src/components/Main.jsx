@@ -14,6 +14,7 @@ import Home from 'components/Home.jsx'
 import Categories from 'components/Categories.jsx'
 import Tags from 'components/Tags.jsx'
 import TagPage from 'components/TagPage.jsx'
+import Archives from 'components/Archives.jsx'
 import './Main.css';
 
 
@@ -125,7 +126,11 @@ function Main() {
                                     <TagPage></TagPage>
                                 </div>}
                             />
-                            <Route path='/archives' render={() => <div>archives</div>} />
+                            <Route path='/archives' render={() =>
+                                <div className='page'>
+                                    <Archives></Archives>
+                                </div>}
+                            />
                             <Route path='/about' render={() => <div className='about-text'>{`¯\\_(ツ)_/¯`}</div>} />
                         </div>
                         <div className='rightbar'>
