@@ -14,6 +14,9 @@ const Latex = require('react-latex');
 // local or github page side
 const urlHostname = window.location.hostname;
 const urlOrigin = window.location.origin;
+const monthTable = {
+    '01': 'Jan.', '02': 'Feb.', '03': 'Mar.', '04': 'Apr.', '05': 'May', '06': 'Jun.', '07': 'Jul.', '08': 'Aug.', '09': 'Sep.', '10': 'Oct.', '11': 'Nov.', '12': 'Dec.'
+};
 
 const postImagesBaseUrl = (urlHostname == "localhost")
     ? `${urlOrigin}/posts/post-images/`
@@ -53,11 +56,14 @@ function Post(props) {
                         } else {
                             setImagePath(`${frontCoverBaseUrl}${frontCover}`);
                         }
-
-                        setDate(date);
+                        const splittedDate = date.split('-');
+                        const year = splittedDate[0];
+                        const month = splittedDate[1];
+                        const day = splittedDate[2];
+                        setDate(`${monthTable[month]} ${day}, ${year}`);
                         setTitle(title);
                         setSubTitle(subtitle);
-                        setCategory(category);
+                        setCategory(category.split(', ').join('/ '));
                     }
 
                     // Set the Markdown content
