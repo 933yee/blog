@@ -4,6 +4,8 @@
     /* display: flex;
     align-items: center;
     justify-content: center; */
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .tag-page-container .datas {
@@ -63,4 +65,23 @@
     justify-content: center;
     /* align-items: center; */
     padding: 2rem;
+}
+
+
+@media (max-width: 425px) {
+    .tag-page-container .datas {
+        margin-left: 1rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        width: 90%;
+    }
+}
+
+@media (max-width: 576px) {
+    .tag-page-container .datas {
+        margin-left: 2rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        width: 90%;
+    }
 }

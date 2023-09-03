@@ -1,6 +1,7 @@
 .archives-container {
     width: 100%;
     height: 100%;
+    overflow-x: hidden;
 }
 
 .archives-container .content {
@@ -46,7 +47,15 @@
 
 @media (max-width: 576px) {
     .archives-container .content {
-        margin-left: 0.5rem;
+        margin-left: 2rem;
+        padding-bottom: 1rem;
+        width: 90%;
+    }
+}
+
+@media (max-width: 425px) {
+    .archives-container .content {
+        margin-left: 1rem;
         padding-bottom: 1rem;
         width: 90%;
     }

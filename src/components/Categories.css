@@ -106,6 +106,15 @@
 
 @media (max-width: 576px) {
     .categories-container .categories-content {
+        margin-left: 2rem;
+        margin-top: 1rem;
+        padding-bottom: 1rem;
+        width: 90%;
+    }
+}
+
+@media (max-width: 425px) {
+    .categories-container .categories-content {
         margin-left: 1rem;
         margin-top: 1rem;
         padding-bottom: 1rem;
