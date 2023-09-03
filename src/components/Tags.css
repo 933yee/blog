@@ -12,8 +12,19 @@
     border-radius: 25%;
     cursor: pointer;
     color: rgb(170, 170, 170);
+    transition: color 200ms;
 }
 
 .tags-container .tag:hover {
     color: rgba(170, 170, 170, 0.6);
+}
+
+.tags-container .post-number {
+    color: gray;
+    padding-left: 5px;
+    transition: opacity 200ms;
+}
+
+.tags-container .post-number:hover {
+    opacity: 0.6;
 }

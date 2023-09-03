@@ -103,3 +103,12 @@
 .categories-container .collapse-button:hover {
     color: rgba(255, 255, 255, 0.7);
 }
+
+@media (max-width: 576px) {
+    .categories-container .categories-content {
+        margin-left: 1rem;
+        margin-top: 1rem;
+        padding-bottom: 1rem;
+        width: 90%;
+    }
+}

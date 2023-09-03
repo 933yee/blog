@@ -16,7 +16,6 @@ function Archives() {
             const year = splittedDate[0];
             const month = monthTable[splittedDate[1]];
             const day = splittedDate[2];
-            console.log(year)
             if (!postDataTmp[year]) {
                 postDataTmp[year] = []
             }

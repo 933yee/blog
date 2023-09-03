@@ -49,3 +49,18 @@
     /* padding-left: 1rem; */
     padding-top: 1rem;
 }
+
+.tag-page-display-container {
+    height: 100%;
+    width: 100%;
+
+}
+
+.tag-page-display-container .tag-container {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    padding: 2rem;
+}

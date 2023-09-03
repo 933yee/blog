@@ -63,7 +63,7 @@ function Post(props) {
                         setDate(`${monthTable[month]} ${day}, ${year}`);
                         setTitle(title);
                         setSubTitle(subtitle);
-                        setCategory(category.split(', ').join('/ '));
+                        setCategory(category.split(', ')[0]);
                     }
 
                     // Set the Markdown content
@@ -169,12 +169,10 @@ function Post(props) {
                         language={language}
                         style={codeStyle}
                         showLineNumbers='True'
-                        wrapLongLines='True'
+                        // wrapLongLines='True'
                         wrapLines='True'
+                        className="code-syntax"
                         customStyle={{
-                            overflow: 'hidden',
-                            border: '1px solid gray',
-                            borderRadius: '0.5rem',
                             backgroundColor: "rgba(0, 0, 0, 0.2)"
                         }}
                     >
@@ -185,43 +183,53 @@ function Post(props) {
         },
     };
 
-    return (
-        index === undefined ? (
-            <div className="post-container">
-                <div className="post-img-container">
-                    <img
-                        src={imagePath}
-                        alt={`${props.fileName.split('.')[0]}.png`}
-                        className="post-img"
-                    />
-                    <div className="color-bar"></div>
-                </div>
-                <div className="post-content">
-                    <div className="post-title">{title}</div>
-                    <div className="post-subtitle">{subtitle}</div>
-                    <div className="post-information">
-                        <div className="post-date">
-                            <MdDateRange className="date-icon"></MdDateRange>
-                            {date}
-                        </div>
-                        <div className="post-category">
-                            <AiFillFolderOpen className="category-icon"></AiFillFolderOpen>
-                            {category}
+
+    const getPostContents = () => {
+        if (index === undefined) {
+            return (
+                <div className="post-container">
+                    <div className="post-img-container">
+                        <img
+                            src={imagePath}
+                            alt={`${props.fileName.split('.')[0]}.png`}
+                            className="post-img"
+                        />
+                        <div className="color-bar"></div>
+                    </div>
+                    <div className="post-content">
+                        <div className="post-title">{title}</div>
+                        <div className="post-subtitle">{subtitle}</div>
+                        <div className="post-information">
+                            <div className="post-date">
+                                <MdDateRange className="date-icon"></MdDateRange>
+                                {date}
+                            </div>
+                            <div className="post-category">
+                                <AiFillFolderOpen className="category-icon"></AiFillFolderOpen>
+                                {category}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        ) : (
-            <div className="post-file-content">
-                <ReactMarkdown
-                    remarkPlugins={[gfm]}
-                    rehypePlugins={[rehypeRaw]}
-                    components={renderers}
-                    children={markdownContent}
-                />
-            </div>
-        )
-    );
+            )
+        } else {
+            return (
+                <div className="post-file-content">
+                    <ReactMarkdown
+                        remarkPlugins={[gfm]}
+                        rehypePlugins={[rehypeRaw]}
+                        components={renderers}
+                        children={markdownContent}
+                    />
+                </div >
+            )
+        }
+    }
+
+
+    return (
+        getPostContents()
+    )
 }
 
 export default Post;

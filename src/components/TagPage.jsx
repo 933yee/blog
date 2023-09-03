@@ -4,6 +4,7 @@ import './TagPage.css';
 
 import { AiOutlineProfile } from "react-icons/ai";
 import { CgTag } from "react-icons/cg"
+import Tags from 'components/Tags.jsx'
 
 function TagPage() {
     const [filenames, setFilenames] = useState([]);
@@ -28,31 +29,48 @@ function TagPage() {
         window.location.href = `${urlOrigin}/#/home/posts/${filename}`;
     }
 
-    return (
-        <div className='tag-page-container'>
-            <div className='datas'>
-                <div className='target-tag'>
-                    <CgTag style={{ marginRight: '0.5rem' }}></CgTag>
-                    {targetTag}
-                    <div className='post-number'>
-                        {`${filenames.length} Post${filenames.length == 1 ? '' : 's'}`}
+    const getTagPageContent = () => {
+        if (targetTag == 'display') { // show tags one the left side (page)
+            return (
+                <div className='tag-page-display-container'>
+                    <div className='tag-container'>
+                        <Tags></Tags>
                     </div>
                 </div>
+            )
+        } else { // show tags one the right side
+            return (
+                <div className='tag-page-container'>
+                    <div className='datas'>
+                        <div className='target-tag'>
+                            <CgTag style={{ marginRight: '0.5rem' }}></CgTag>
+                            {targetTag}
+                            <div className='post-number'>
+                                {`${filenames.length} Post${filenames.length == 1 ? '' : 's'}`}
+                            </div>
+                        </div>
 
-                {filenames.map((filename, index) => (
-                    <div className='filedata-container' key={index} onClick={() => handlePostOnClick(filename)}>
-                        <div className='title' >
-                            <AiOutlineProfile style={{ marginRight: '0.5rem', color: 'white' }}></AiOutlineProfile>
-                            {files[filename]['title']}
-                        </div>
-                        <div className='date'>
-                            {files[filename]['date']}
-                        </div>
+                        {filenames.map((filename, index) => (
+                            <div className='filedata-container' key={index} onClick={() => handlePostOnClick(filename)}>
+                                <div className='title' >
+                                    <AiOutlineProfile style={{ marginRight: '0.5rem', color: 'white' }}></AiOutlineProfile>
+                                    {files[filename]['title']}
+                                </div>
+                                <div className='date'>
+                                    {files[filename]['date']}
+                                </div>
+                            </div>
+                        ))}
                     </div>
-                ))}
-            </div>
 
-        </div>
+                </div>
+            )
+        }
+    }
+
+
+    return (
+        getTagPageContent()
     )
 }
 
