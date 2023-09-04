@@ -111,13 +111,15 @@
 
 /* 文章內 */
 .post-file-content {
-    height: 100%;
+    height: auto;
     width: 100%;
     /* margin-left: 2rem; */
     /* padding-left: 2rem;
     padding-right: 2rem;
     padding-top: 2rem; */
     padding: 2rem;
+    /* margin-bottom: 2rem; */
+    /* border: 2px solid white; */
     font-family: 'Noto Sans', sans-serif;
     color: rgba(255, 255, 255, 0.8);
 }
@@ -191,13 +193,13 @@
 
     /* 576 768 992 1200 */
     .post-container .post-title {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 
     .post-container .post-subtitle {
         height: auto;
         flex: auto;
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
 
     .post-container .post-information {
@@ -209,7 +211,7 @@
         padding-right: 0;
         justify-content: end;
         align-items: start;
-        font-size: 0.6rem;
+        font-size: 0.8rem;
         display: flex;
 
     }
@@ -222,7 +224,7 @@
 
     .post-container .date-icon,
     .post-container .category-icon {
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
 
     .post-container .post-date {
@@ -237,5 +239,26 @@
 
     .post-file-content ul ul {
         padding-left: 1rem;
+    }
+}
+
+@media (max-width: 425px) {
+
+    /* 576 768 992 1200 */
+    .post-container .post-title {
+        font-size: 1rem;
+    }
+
+    .post-container .post-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .post-container .post-information {
+        font-size: 0.6rem;
+    }
+
+    .post-container .date-icon,
+    .post-container .category-icon {
+        font-size: 0.8rem;
     }
 }

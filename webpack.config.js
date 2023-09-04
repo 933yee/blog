@@ -46,7 +46,7 @@ module.exports = {
     output: {
         path: distPath,
         filename: '[name].bundle.js',
-        publicPath: '/'
+        publicPath: './'
     },
     module: {
         rules: [

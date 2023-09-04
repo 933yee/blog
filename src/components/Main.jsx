@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import {
     HashRouter as Router,
     Route,
-    Link
+    Link,
+    useHistory
 } from 'react-router-dom';
 
-import { AiFillHome, AiFillTags, AiOutlineSearch, AiOutlineDoubleLeft } from "react-icons/ai";
+import { AiFillHome, AiFillTags, AiOutlineSearch, AiOutlineBars } from "react-icons/ai";
 import { BiCategoryAlt } from "react-icons/bi";
 import { BsFillArchiveFill, BsFillPersonFill, BsBug } from "react-icons/bs";
 import { FaFacebook, FaGithub, FaYoutube, FaEnvelope, FaSourcetree } from "react-icons/fa";
@@ -21,7 +22,7 @@ import './Main.css';
 
 function Main() {
     const [inputSearchText, setinputSearchText] = useState('');
-    const [hideLeftBar, setHideLeftBar] = useState(true); // the hide button on the top
+    const [hideLeftBar, setHideLeftBar] = useState(false); // the hide button on the top
 
     const handleClickHomepage = () => {
         window.location.href = '/#';
@@ -121,12 +122,11 @@ function Main() {
             <div className={`right ${hideLeftBar ? 'hide' : ''}`}>
                 <div className='navbar'>
                     <div className={`hide-button`}>
-                        <FaRegCaretSquareLeft
+                        <AiOutlineBars
                             className={`hide-button-text ${hideLeftBar ? 'hide' : ''}`}
                             onClick={handleHideButtonOnClick}
                         />
                     </div>
-                    Home
                 </div>
                 <div style={{ display: 'flex', width: '100%', height: '92%' }}>
                     <div className='contents'>
