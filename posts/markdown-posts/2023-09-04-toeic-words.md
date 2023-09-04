@@ -57,15 +57,3 @@ tag: toeic
     
 <br>
 
-
-- #### fabric
-    ```citation
-    word meaning
-    ```
-    ```def
-    word related
-    ```
-    - sentence 1
-    - sentence 2
-
-<br>
