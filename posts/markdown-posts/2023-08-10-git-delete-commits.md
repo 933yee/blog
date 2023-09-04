@@ -1,10 +1,10 @@
 ---
 date: 2023-08-10
 title: Git delete commit history
-subtitle: protect your privacy
-category: technique 
+subtitle: protect privacy
+category: skill, git
 frontCover: study.png
-tag: git
+tag: git, skill
 ---
 
 

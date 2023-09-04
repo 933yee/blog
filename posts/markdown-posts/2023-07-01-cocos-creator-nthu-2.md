@@ -2,7 +2,7 @@
 date: 2023-07-01
 title: Cocos Creator (2/4)
 subtitle: [CGV/MIS] 2023 Summer Internship Entrance Test for Project Students
-category: personal note
+category: cocos
 frontCover: cocos.png
 tag: cocos
 ---

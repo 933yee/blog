@@ -2,7 +2,7 @@
 date: 2023-07-09
 title: Machine Learning Python Practice
 subtitle: Machine learning basic practice
-category: personal note
+category: ML
 frontCover: study.png
 tag: ML
 ---

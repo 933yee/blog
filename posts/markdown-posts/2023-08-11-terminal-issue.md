@@ -2,9 +2,9 @@
 date: 2023-08-11
 title: Linux/WSL Auto Config Issue
 subtitle: path setting
-category: layer1, issue 
+category: skill, linux 
 frontCover: study.png
-tag: linux, issue
+tag: linux, skill
 ---
 
 ## Linux/WSL Installation Issue with powrap Configuration

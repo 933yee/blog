@@ -2,7 +2,7 @@
 date: 2023-07-06
 title: RNN & Attention Model
 subtitle: [CGV/MIS] 2023 Summer Internship Entrance Test for Project Students
-category: personal note
+category: ML
 frontCover: study.png
 tag: ML, RNN
 ---

@@ -2,7 +2,7 @@
 date: 2023-07-09
 title: Machine Learning Learning List
 subtitle: Machine learning todo list
-category: personal note
+category: ML
 frontCover: study.png
 tag: ML
 ---

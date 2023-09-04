@@ -2,7 +2,7 @@
 date: 2023-07-12
 title: ML & DL nouns
 subtitle: basic nouns explanation
-category: personal note 
+category: ML
 frontCover: study.png
 tag: ML, DL
 ---

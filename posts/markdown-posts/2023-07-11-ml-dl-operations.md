@@ -2,7 +2,7 @@
 date: 2023-07-11
 title: ML & DL operations
 subtitle: basic operations explanation
-category: personal note 
+category: ML
 frontCover: study.png
 tag: ML, DL
 ---
