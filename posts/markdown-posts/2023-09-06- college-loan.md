@@ -7,7 +7,7 @@ frontCover: https://kuochuanpan.github.io/ceag/images/logo.png
 tag: loan, nthu
 ---
 
-到 **校務資訊系統 (https://www.ccxp.nthu.edu.tw/ccxp/INQUIRE)/ 繳費單相關作業(出納組)/ 繳費單列印/ 學雜費**，看學費多少，扣掉**不可貸款項目** (體育設施使用費)
+到**校務資訊系統 (https://www.ccxp.nthu.edu.tw/ccxp/INQUIRE)/ 繳費單相關作業(出納組)/ 繳費單列印/ 學雜費**，看學費多少，扣掉**不可貸款項目** (體育設施使用費)
 
 - ##### 就學貸款申請表
   - 到校務資訊系統/ 就學貸款/就學貸款申請/填寫就學貸款申請表，列印簽名，填好會給**不可貸款項目繳費單**

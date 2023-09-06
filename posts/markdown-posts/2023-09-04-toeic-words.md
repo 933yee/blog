@@ -7,6 +7,133 @@ frontCover: study.png
 tag: toeic
 ---
 
+veritable, tempt, sack, exceptional, nanny, shawl, clams, eggplant, blaze, glow, sparkle, twinkle
+
+```vocabulary
+    gondolier (ɡɒndə`lɪə)
+    ```quote
+    a person whose job is to move and control the direction of a gondola in Venice
+    ```
+    ```def
+    boatman
+    ```
+    - The **gondolier** skillfully navigated the narrow canals of Venice.
+```
+
+```vocabulary 
+    oar (ɔr)
+    ```quote
+    a long pole with a wide flat blade at one end, used for rowing a boat
+    ```
+    - Sonja didn't know how to use the **oars** and only made the boat go in circles.
+    - We took one **oar** each and rowed quickly to the shore.
+```
+
+```vocabulary
+    glisten
+    ```quote
+    to shine and look wet or oily
+    ```
+    ```def
+    blaze, glow, sparkle, twinkle
+    ```
+    - Everyone was working hard, and all their faces were **glistening** with sweat.
+    - Her eyes were **glistening** with tears.
+```
+
+```vocabulary
+    likewise
+    ```quote
+    in the same way
+    ```
+    ```def
+    alike, similarly
+    ```
+    - There are many things to see and do in Tokyo. **Likewise**, the city has reliable and efficient transportation.
+    - **Nanny** put on a **shawl** and told the girls to do **likewise**.
+    - The **clams** were delicious. **Likewise**, the **eggplant** was excellent.
+```
+
+```vocabulary
+    seduce
+    ```quote
+    1. to persuade someone to have sex with you, especially in a way that is attractive and not too direct
+    2. to make someone want to do something by making it seem very attractive or interesting to them
+    ```
+    ```def
+    lure, tempt, seduction, seductive
+    ```
+    - The professor was **sacked** for **seducing** female students.
+    - Sally joined the rival corporation because it had **seduced** her with an **exceptional** job offer.
+    - Who could resist the **seductions** of the tropical island?
+    - The idea of retiring to the south of France is highly **seductive**.
+```
+
+```vocabulary
+    twilight
+    ```quote
+    1. the small amount of light in the sky as the day ends
+    2. the time when day is just starting to become night
+    ```
+    ```def
+    dusk
+    ```
+    - After spending the whole day on the lake, we decided to come in at **twilight**.
+    - The end of the cigarette glowed in the **twilight**.
+```
+
+```vocabulary
+    plaza (`plɑːzə)
+    ```quote
+    1. a public outdoor square especially in a town where Spanish is spoken
+    2. a group of shops and other business buildings in a town, usually with outdoor areas between them
+    ```
+    - There was a statue of king in the town's **plaza**.
+    - There is an underground shopping **plaza** below Paris's Louvre Museum.
+```
+
+```vocabulary
+    sheer
+    ```quote
+    1. used to emphasize the size, degree or amount of something
+    2. complete and not mixed with anything else
+    3. (of cloth, etc.) thin, light and almost transparent
+    ```
+    ```def
+    pure
+    ```
+    - Larry loved sports because of the **sheer** thrill of competition.
+    - The area is under threat from the **sheer** number of tourists using it.
+    - The dress is **sheer** and white.
+    - The **sheer** size of the country makes it a very suitable test site for space technology.
+```
+
+```vocabulary
+    banquet
+    ```quote
+    1. a formal dinner for many people on an important occasion
+    2. a large impressive meal
+    ```
+    ```def
+    feast, state banquet
+    ```
+    - May and Ted held their wedding **banquet** at an expensive hotel.
+    - A state **banquet** was held **in honor of** the visiting president.
+    - The meal that followed was a **veritable banquet**.
+```
+
+```vocabulary
+    eternally
+    ```quote
+    in a way that exists or continues forever without an end
+    ```
+    ```def
+    forever, eternal
+    ```
+    - The rich are **eternally** looking for wayts to protect their money.
+    - I’ll be **eternally** grateful to you for this.
+```
+
 ```vocabulary
     procession
     ```quote
@@ -54,7 +181,7 @@ tag: toeic
 ```
  
 ```vocabulary
-    theatrical
+    theatrical (θi`ætrɪkl)
     ```quote
     1. connected with the theater
     2. behaving in a loud or very noticeable way that is intended to get people’s attention
@@ -107,15 +234,15 @@ tag: toeic
 ```
 
 ```vocabulary
-    prestige
+    prestige (pre`stiːʒ)
     ```quote
     the respect and admiration that someone or something gets because of their success or important position in society
     ```
     ```def
     fame, reputation, prestigious
     ```
-    - The number of film festivals has inreased, but few have achieved the **presitige** of Cannes.
-    - The king wanted to enhance his **presitige** through war.
+    - The number of film festivals has inreased, but few have achieved the **prestige** of Cannes.
+    - The king wanted to enhance his **prestige** through war.
 ```
 
 ```vocabulary
