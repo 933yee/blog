@@ -5,6 +5,8 @@ const distPath = path.resolve(__dirname, 'dist');
 
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const generateFilesList = require('./prebuild_scripts/generateFilesList.js');
+const isDev = (process.env.NODE_ENV === 'development');
+console.log(process.env.NODE_ENV)
 
 const htmlPlugin = new HtmlWebPackPlugin({
     template: "./index.html",
@@ -46,7 +48,7 @@ module.exports = {
     output: {
         path: distPath,
         filename: '[name].bundle.js',
-        publicPath: './'
+        publicPath: (isDev ? '/' : './')
     },
     module: {
         rules: [
@@ -91,7 +93,7 @@ module.exports = {
             chunks: "all"
         }
     },
-    plugins: [htmlPlugin, runWatchMarkdownScript],
+    plugins: [htmlPlugin, isDev && runWatchMarkdownScript],
     devServer: {
         contentBase: distPath,
         compress: true,
@@ -101,6 +103,10 @@ module.exports = {
             generateFilesList();
         }
     },
+    performance: {
+        hints: false,
+    },
+    // stats: 'none',
     devtool: 'cheap-source-map'
 };
 

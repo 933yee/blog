@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
-import { AiFillFolderOpen } from 'react-icons/ai';
+import { AiFillFolderOpen, AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import { BiRightArrow, BiShowAlt } from 'react-icons/bi'
 import { MdDateRange } from 'react-icons/md';
 import rehypeRaw from 'rehype-raw';
 import ReactPlayer from 'react-player';
@@ -37,6 +38,7 @@ function Post(props) {
     const [subtitle, setSubTitle] = useState('');
     const [category, setCategory] = useState('');
     const [imagePath, setImagePath] = useState('');
+    const [wordDetailsVisibility, setWordDetailsVisibility] = useState({});
     const index = props.index;
 
     useEffect(() => {
@@ -49,13 +51,22 @@ function Post(props) {
                     if (metadata) {
                         const { date, title, subtitle, category, frontCover } = metadata;
                         // check whether frontCover is in md file and set the front cover of the post
-                        if (frontCover === undefined) {
-                            getImagePath().then((finalImagePath) => {
-                                setImagePath(finalImagePath);
+                        if (index === undefined)
+                            checkImageExists(frontCover).then(res => {
+                                if (res) {
+                                    setImagePath(frontCover);
+                                } else {
+                                    const storedImage = `${frontCoverBaseUrl}${frontCover}`;
+                                    checkImageExists(storedImage).then(res => {
+                                        if (res) {
+                                            setImagePath(storedImage);
+                                        } else {
+                                            setImagePath(defaultImagePath);
+                                        }
+                                    })
+                                }
                             });
-                        } else {
-                            setImagePath(`${frontCoverBaseUrl}${frontCover}`);
-                        }
+
                         const splittedDate = date.split('-');
                         const year = splittedDate[0];
                         const month = splittedDate[1];
@@ -80,7 +91,9 @@ function Post(props) {
             const metadataLines = metadataMatch[1].trim().split('\n');
             const metadata = {};
             for (const line of metadataLines) {
-                const [key, value] = line.split(':').map((item) => item.trim());
+                const splittedLine = line.split(':');
+                const key = splittedLine[0];
+                const value = splittedLine.slice(1).join(':').trim();
                 metadata[key] = value;
             }
             const remainingContent = markdownContent.substring(metadataMatch[0].length);
@@ -103,24 +116,60 @@ function Post(props) {
         });
     }
 
-    // get the path of the post image
-    async function getImagePath() {
-        const imagePath = `${frontCoverBaseUrl}${props.fileName.split('.')[0]}.png`;
-        const imageExists = await checkImageExists(imagePath);
-        if (imageExists) {
-            return imagePath;
-        } else {
-            return defaultImagePath;
-        }
+    const handleVocabularyClicked = (word) => {
+        setWordDetailsVisibility((prevState) => ({
+            ...prevState,
+            [word]: !prevState[word],
+        }));
     }
 
     // syntax highlighter
     const renderers = {
+        pre({ node, ...props }) {
+            try {
+                const language = props.children[0].props.className.replace('language-', '');
+                if (language === 'vocabulary') {
+                    return <>{props.children}</>;
+                } else {
+                    return <pre {...props} />;
+                }
+            } catch {
+                return <pre {...props} />;
+            }
+
+        },
         code: ({ node, inline, className, children }) => {
             const language = className ? className.replace('language-', '') : '';
             const value = children[0] || '';
-
-            if (language === 'youtube') { // 處理YouTube影片
+            if (language === 'vocabulary') {
+                const lines = value.split('\n');
+                const unindentedLines = lines.map((line) => line.replace(/^\s{4}/, ''));
+                const unindentedValue = unindentedLines.slice(1).join('\n');
+                const word = unindentedLines[0].replace('- #### ', '');
+                return (
+                    <ul>
+                        <h4>
+                            <div style={{
+                                fontSize: '1rem',
+                                color: 'white'
+                            }}
+                                className='btn btn-outline-dark btn-sm'
+                                onClick={() => handleVocabularyClicked(word)}>
+                                {wordDetailsVisibility[word] ? <AiFillEyeInvisible /> : <AiFillEye />}
+                            </div>
+                            {` ${word}`}
+                        </h4>
+                        <div style={{ display: wordDetailsVisibility[word] ? 'block' : 'none' }}>
+                            <ReactMarkdown
+                                remarkPlugins={[gfm]}
+                                rehypePlugins={[[rehypeRaw]]}
+                                components={renderers}
+                                children={unindentedValue}
+                            />
+                        </div>
+                    </ul>
+                );
+            } else if (language === 'youtube') { // 處理YouTube影片
                 return (
                     <div style={{
                         display: 'flex',
@@ -129,13 +178,13 @@ function Post(props) {
                         overflow: 'hidden'
                     }} ><ReactPlayer url={value} controls /></div>
                 );
-            } else if (language === 'def') {
+            } else if (language === 'def' || language === 'definition') {
                 return (
                     <div style={{ display: "flex", color: "rgb(255, 255, 255, 0.6)", paddingLeft: "0.5rem", whiteSpace: "pre-wrap" }}>
                         »<div style={{ paddingLeft: "0.5rem" }}>{value}</div>
                     </div >
                 );
-            } else if (language === 'citation') {
+            } else if (language === 'quote') {
                 return (
                     <div style={{ paddingLeft: "1em", borderLeft: "4px solid rgb(255, 255, 255, 0.2)", color: "rgb(255, 255, 255, 0.5)", whiteSpace: "pre-wrap" }}>
                         {value}
@@ -185,6 +234,7 @@ function Post(props) {
 
 
     const getPostContents = () => {
+        // console.log(markdownContent)
         if (index === undefined) {
             return (
                 <div className="post-container">
@@ -215,6 +265,9 @@ function Post(props) {
         } else {
             return (
                 <div className="post-file-content">
+                    <div className='post-data'>
+                        {title}
+                    </div>
                     <ReactMarkdown
                         remarkPlugins={[gfm]}
                         rehypePlugins={[rehypeRaw]}

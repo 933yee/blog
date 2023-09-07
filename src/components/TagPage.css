@@ -8,6 +8,26 @@
     overflow-x: hidden;
 }
 
+.tag-page-container::-webkit-scrollbar {
+    width: 12px;
+}
+
+.tag-page-container::-webkit-scrollbar-track {
+    background-color: rgb(27, 27, 30);
+}
+
+/* Customize the scrollbar thumb */
+.tag-page-container::-webkit-scrollbar-thumb {
+    background-color: #7a7a7a;
+    border-radius: 5px;
+}
+
+/* Customize the scrollbar when hovering over it */
+.tag-page-container::-webkit-scrollbar-thumb:hover {
+    background-color: #959595;
+}
+
+
 .tag-page-container .datas {
     margin-left: 5rem;
     padding-top: 3rem;

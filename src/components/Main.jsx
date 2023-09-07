@@ -127,6 +127,21 @@ function Main() {
                             onClick={handleHideButtonOnClick}
                         />
                     </div>
+                    <div className={`search ${hideLeftBar ? '' : 'hide'}`}>
+                        <div >
+                            {/* <div className='search-text'>Search</div> */}
+                            <input
+                                type="text"
+                                className='search-input'
+                                placeholder='Type something...'
+                                value={inputSearchText}
+                                onChange={handleInputSearchChange}
+                            />
+                        </div>
+                        <div className='search-icon'>
+                            <AiOutlineSearch></AiOutlineSearch>
+                        </div>
+                    </div>
                 </div>
                 <div style={{ display: 'flex', width: '100%', height: '92%' }}>
                     <div className='contents'>
@@ -163,21 +178,6 @@ function Main() {
                         <Route path='/about' render={() => <div className='about-text'>{`¯\\_(ツ)_/¯`}</div>} />
                     </div>
                     <div className={`rightbar`}>
-                        <div className='search'>
-                            <div >
-                                <div className='search-text'>Search</div>
-                                <input
-                                    type="text"
-                                    className='search-input'
-                                    placeholder='Type something...'
-                                    value={inputSearchText}
-                                    onChange={handleInputSearchChange}
-                                />
-                            </div>
-                            <div className='search-icon'>
-                                <AiOutlineSearch></AiOutlineSearch>
-                            </div>
-                        </div>
                         <div className='tags'>
                             <AiFillTags style={{ marginRight: "5px" }}></AiFillTags>Tags
                             <Tags></Tags>

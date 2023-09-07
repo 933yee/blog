@@ -137,8 +137,10 @@ function Categories(props) {
         }, []);
         return displayCategory(organizedData, 1, folderIsOpen, dispatch);
     }
+
     useEffect(() => {
-        handleExpandButtonClick()
+        if (searchText != '')
+            handleExpandButtonClick()
     }, [searchText])
 
 
