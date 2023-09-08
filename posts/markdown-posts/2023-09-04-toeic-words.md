@@ -6,9 +6,7 @@ category: toeic
 frontCover: study.png
 tag: toeic
 ---
-
 veritable, tempt, sack, exceptional, nanny, shawl, clams, eggplant, blaze, glow, sparkle, twinkle
-
 ```vocabulary
     gondolier (ɡɒndə`lɪə)
     ```quote
