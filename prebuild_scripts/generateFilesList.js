@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+
 function generateFilesList(updatedFilePath) {
     return new Promise((resolve, reject) => {
         const folderPath = path.join(__dirname, '.././dist/posts/markdown-posts');
@@ -13,7 +14,9 @@ function generateFilesList(updatedFilePath) {
                 const frontmatterLines = frontmatterContent.trim().split('\n');
 
                 for (const line of frontmatterLines) {
-                    const [key, value] = line.split(':').map(item => item.trim());
+                    const splittedLines = line.split(':');
+                    const key = splittedLines[0].trim();
+                    const value = splittedLines.slice(1).join(':').trim();
                     frontmatter[key] = value;
                 }
 
@@ -46,34 +49,41 @@ function generateFilesList(updatedFilePath) {
             const jsContent = fs.readFileSync(path.join(__dirname, '../src/settings', 'files.js'), 'utf-8');
             const jsonMatch = jsContent.match(/export default (\{[\s\S]*?\});/);
 
-            if (jsonMatch && jsonMatch.length > 1) {
-                const jsonContent = jsonMatch[1];
-                const srcFilesObject = JSON.parse(jsonContent);
-
-                // Now you can use srcFilesObject as your parsed JSON data
-                console.log(srcFilesObject);
-            } else {
-                console.error('JSON data not found in the JavaScript module.');
-            }
-
+            const jsonContent = jsonMatch[1];
+            const srcFilesObject = JSON.parse(jsonContent);
+            Object.keys(postsData).map((fileName) => {
+                if (srcFilesObject.hasOwnProperty(fileName))
+                    postsData[fileName]['update'] = srcFilesObject[fileName]['update'];
+            });
 
             if (updatedFilePath) {
-                const filename = updatedFilePath.split('\\').pop();
+                const fileName = updatedFilePath.split('\\').pop();
 
                 const today = new Date();
                 const now = today.toLocaleString();
 
-                if (postsData.hasOwnProperty(filename)) {
-                    postsData[filename]['update'] = now;
-                    console.log(`update ${filename}`)
+                if (postsData.hasOwnProperty(fileName)) {
+                    postsData[fileName]['update'] = now;
+                    console.log(`update ${fileName}`)
                 } else {
-                    console.log(`File ${filename} not found in the files.js object.`);
+                    console.log(`File ${fileName} not found in the files.js object.`);
                 }
             }
 
-            const fileContent = `export default ${JSON.stringify(postsData, null, 4)};`;
+            // 排序，最近更新的最上面
+            const keys = Object.keys(postsData);
+            keys.sort((a, b) => {
+                const updateTimeA = new Date(postsData[a].update);
+                const updateTimeB = new Date(postsData[b].update);
+                return updateTimeB - updateTimeA;
+            });
+            const sortedPostsData = {};
+            keys.forEach(key => {
+                sortedPostsData[key] = postsData[key];
+            });
 
 
+            const fileContent = `export default ${JSON.stringify(sortedPostsData, null, 4)};`;
             fs.writeFile(path.join(__dirname, '../src/settings', 'files.js'), fileContent, (err) => {
                 if (err) {
                     console.error(err);
@@ -83,9 +93,9 @@ function generateFilesList(updatedFilePath) {
                     resolve();
                 }
             });
+
         });
     }
     )
 }
-
 module.exports = generateFilesList;

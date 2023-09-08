@@ -1,12 +1,30 @@
 export default {
-    "2023-09-06-college-loan.md": {
-        "date": "2023-09-06",
-        "title": "College loan",
-        "subtitle": "nthu student loan",
+    "2023-09-08-discord-music-bot.md": {
+        "date": "2023-09-08",
+        "title": "Discord Music Bot",
+        "subtitle": "simple music bot",
+        "category": "side-projects, discord",
+        "frontCover": "https://i.pinimg.com/474x/34/91/f3/3491f3e50ab6a4d51a348f9cc2419842.jpg",
+        "tag": "side-projects, discord, bot, back-end",
+        "update": "9/9/2023, 12:12:20 AM"
+    },
+    "2023-09-08-blog-introduction.md": {
+        "date": "2023-09-08",
+        "title": "Blog Introduction",
+        "subtitle": "brief overview of the framework of my blog",
         "category": "others",
-        "frontCover": "https",
-        "tag": "loan, nthu",
-        "update": ""
+        "frontCover": "https://images.inc.com/uploaded_files/image/1920x1080/getty_503426092_342208.jpg",
+        "tag": "blog, react",
+        "update": "9/8/2023, 11:56:11 PM"
+    },
+    "2023-09-08-junior-courses.md": {
+        "date": "2023-09-08",
+        "title": "大三上學期課程資訊",
+        "subtitle": "課程注意事項",
+        "category": "personal-note",
+        "frontCover": "https://kuochuanpan.github.io/ceag/images/logo.png",
+        "tag": "personal-note, courses",
+        "update": "9/8/2023, 11:37:17 PM"
     },
     "2023-09-04-toeic-words.md": {
         "date": "2023-09-04",
@@ -15,7 +33,16 @@ export default {
         "category": "toeic",
         "frontCover": "study.png",
         "tag": "toeic",
-        "update": ""
+        "update": "9/8/2023, 12:44:54 PM"
+    },
+    "2023-09-06-college-loan.md": {
+        "date": "2023-09-06",
+        "title": "College loan",
+        "subtitle": "nthu student loan",
+        "category": "others",
+        "frontCover": "https://kuochuanpan.github.io/ceag/images/logo.png",
+        "tag": "loan, nthu",
+        "update": "9/8/2023, 12:44:51 PM"
     },
     "2023-08-19-cp-note.md": {
         "date": "2023-08-19",
@@ -24,7 +51,7 @@ export default {
         "category": "coding-problems",
         "frontCover": "study.png",
         "tag": "coding-problems, skill",
-        "update": "9/8/2023, 12:26:58 AM"
+        "update": ""
     },
     "2023-08-11-terminal-issue.md": {
         "date": "2023-08-11",

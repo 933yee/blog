@@ -13,6 +13,7 @@ import { FaFacebook, FaGithub, FaYoutube, FaEnvelope, FaSourcetree } from "react
 import { FaRegCaretSquareLeft } from "react-icons/fa"
 
 import Home from 'components/Home.jsx'
+import Post from 'components/Post.jsx'
 import Categories from 'components/Categories.jsx'
 import Tags from 'components/Tags.jsx'
 import TagPage from 'components/TagPage.jsx'
@@ -152,7 +153,7 @@ function Main() {
                         </div> */}
                         <Route path='/' exact render={() =>
                             <div className='page'>
-                                yee
+                                <Post fileName={`2023-09-08-blog-introduce.md`} index={0} />
                             </div>}
                         />
                         <Route path='/home' render={() =>

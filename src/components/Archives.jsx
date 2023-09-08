@@ -21,12 +21,16 @@ function Archives() {
             }
             postDataTmp[year].push(
                 {
+                    'date': date,
                     'title': title,
                     'month': month,
                     'day': day,
                     'filename': filename,
                 }
             )
+        })
+        Object.keys(postDataTmp).map((year) => {
+            postDataTmp[year].sort((a, b) => new Date(b.date) - new Date(a.date));
         })
         setPostData(postDataTmp)
     }, [])

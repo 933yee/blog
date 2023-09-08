@@ -8,6 +8,8 @@ import rehypeRaw from 'rehype-raw';
 import ReactPlayer from 'react-player';
 import './Post.css';
 
+import files from 'settings/files.js';
+
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula, twilight, nightOwl, oneDark, tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 const codeStyle = tomorrow;
@@ -37,6 +39,7 @@ function Post(props) {
     const [title, setTitle] = useState('');
     const [subtitle, setSubTitle] = useState('');
     const [category, setCategory] = useState('');
+    const [update, setUpdate] = useState('');
     const [imagePath, setImagePath] = useState('');
     const [wordDetailsVisibility, setWordDetailsVisibility] = useState({});
     const index = props.index;
@@ -46,58 +49,50 @@ function Post(props) {
             fetch(`${postsBaseUrl}${props.fileName}`)
                 .then((response) => response.text())
                 .then((content) => {
-                    // Extract metadata
-                    const { metadata, remainingContent } = extractMetadata(content);
-                    if (metadata) {
-                        const { date, title, subtitle, category, frontCover } = metadata;
-                        // check whether frontCover is in md file and set the front cover of the post
-                        if (index === undefined)
-                            checkImageExists(frontCover).then(res => {
-                                if (res) {
-                                    setImagePath(frontCover);
-                                } else {
-                                    const storedImage = `${frontCoverBaseUrl}${frontCover}`;
-                                    checkImageExists(storedImage).then(res => {
-                                        if (res) {
-                                            setImagePath(storedImage);
-                                        } else {
-                                            setImagePath(defaultImagePath);
-                                        }
-                                    })
-                                }
-                            });
-
-                        const splittedDate = date.split('-');
-                        const year = splittedDate[0];
-                        const month = splittedDate[1];
-                        const day = splittedDate[2];
-                        setDate(`${monthTable[month]} ${day}, ${year}`);
-                        setTitle(title);
-                        setSubTitle(subtitle);
-                        setCategory(category.split(', ')[0]);
-                    }
+                    // Extract content
+                    const extractedMarkdwonContent = extractContent(content);
 
                     // Set the Markdown content
-                    setMarkdownContent(remainingContent);
+                    setMarkdownContent(extractedMarkdwonContent);
                 });
         }
         fetchData();
+        const { date, title, subtitle, category, frontCover, update } = files[props.fileName];
+        // check whether frontCover is in md file and set the front cover of the post
+        // console.log(frontCover)
+        if (index === undefined)
+            checkImageExists(frontCover).then(res => {
+                if (res) {
+                    setImagePath(frontCover);
+                } else {
+                    const storedImage = `${frontCoverBaseUrl}${frontCover}`;
+                    checkImageExists(storedImage).then(res => {
+                        if (res) {
+                            setImagePath(storedImage);
+                        } else {
+                            setImagePath(defaultImagePath);
+                        }
+                    })
+                }
+            });
+
+        const splittedDate = date.split('-');
+        const year = splittedDate[0];
+        const month = splittedDate[1];
+        const day = splittedDate[2];
+        setDate(`${monthTable[month]} ${day}, ${year}`);
+        setTitle(title);
+        setSubTitle(subtitle);
+        setCategory(category.split(', ')[0]);
+        setUpdate(update);
     }, []);
 
-    function extractMetadata(markdownContent) {
+    function extractContent(markdownContent) {
         const metadataRegex = /^---\s*\n([\s\S]+?)\n?---/;
         const metadataMatch = markdownContent.match(metadataRegex);
         if (metadataMatch && metadataMatch[1]) {
-            const metadataLines = metadataMatch[1].trim().split('\n');
-            const metadata = {};
-            for (const line of metadataLines) {
-                const splittedLine = line.split(':');
-                const key = splittedLine[0];
-                const value = splittedLine.slice(1).join(':').trim();
-                metadata[key] = value;
-            }
-            const remainingContent = markdownContent.substring(metadataMatch[0].length);
-            return { metadata, remainingContent };
+            const extractedMarkdwonContent = markdownContent.substring(metadataMatch[0].length);
+            return extractedMarkdwonContent;
         }
         return null;
     }
@@ -222,7 +217,8 @@ function Post(props) {
                         wrapLines='True'
                         className="code-syntax"
                         customStyle={{
-                            backgroundColor: "rgba(0, 0, 0, 0.2)"
+                            backgroundColor: "rgba(0, 0, 0, 0.2)",
+                            margin: "1rem 0 0 0"
                         }}
                     >
                         {newValue}
@@ -266,7 +262,15 @@ function Post(props) {
             return (
                 <div className="post-file-content">
                     <div className='post-data'>
-                        {title}
+                        <div className='title'>
+                            {title}
+                        </div>
+                        <div className='update-time'>
+                            updated:
+                            <span style={{ opacity: 0.7, fontSize: '0.8rem', paddingLeft: '5px' }}>
+                                {update}
+                            </span>
+                        </div>
                     </div>
                     <ReactMarkdown
                         remarkPlugins={[gfm]}
