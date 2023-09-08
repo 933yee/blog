@@ -1,6 +1,6 @@
 ---
 date: 2023-09-08
-title: Blog Introduce
+title: Blog Introduction
 subtitle: brief overview of the framework of my blog
 category: others
 frontCover: https://images.inc.com/uploaded_files/image/1920x1080/getty_503426092_342208.jpg
