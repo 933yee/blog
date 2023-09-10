@@ -6,7 +6,223 @@ category: toeic
 frontCover: study.png
 tag: toeic
 ---
-veritable, tempt, sack, exceptional, nanny, shawl, clams, eggplant, blaze, glow, sparkle, twinkle
+veritable, tempt, sack, exceptional, nanny, shawl, clams, eggplant, blaze, glow, sparkle, twinkle, bearing trays, delicate, vicious, civilization, executive, monument, tsunami
+
+```vocabulary
+    glyph (ɡlɪf)
+    ```quote
+    a symbol or picture that represents a word, especially one from an ancient writing system
+    ```
+    - How to write the Mayan **glyph** for **cacao**?
+```
+
+```vocabulary
+    fresco
+    ```quote
+    a painting made on a wall while the plaster is still wet
+    ```
+    - The ceiling is richly decorated in marble and **fresco**.
+```
+
+```vocabulary
+    artifact
+    ```quote
+    an object that is made by a person, especially something of historical or cultural interest
+    ```
+    - The **artifacts** from the emperor's tomb are now on dispaly in the museum.
+```
+
+```vocabulary
+    mysterious
+    ```quote
+    1. mysterious events or situations are difficult to explain or understand
+    2. a mysterious person is someone who you know very little about and who seems strange or interesting
+    ```
+    ```def
+    mystical, mystery
+    ```
+    - Stonehenge is one of the most mysterious **monuments** in the world because no one can figure out the reason for its construction.
+    - I decided to find out more about my **mysterious** new neighbor.
+```
+
+```vocabulary
+    devour
+    ```quote
+    1. to eat something quickly because you are very hungry
+    2. to read something quickly and eagerly, or watch something with great interest
+    3. to destroy someone or something
+    4. to use up all of something
+    ```
+    - The uninhabited island was **devoured** by the massive **tsunami**.
+    - The hungry footable player **devoured** two pizzas and three cheeseburger.
+    - Her body had been almost entirely **devoured** by the disease.
+```
+
+```vocabulary
+    crumble
+    ```quote
+    1. if something, especially something made of stone or rock, is crumbling, small pieces are breaking off it
+    2. to break apart into lots of little pieces, or make something do this
+    ```
+    - Buildings from the ancient civilization eventually **crumbled** to dust.
+    - She crumbled the dry **earth** into fine powdery dust.
+```
+
+```vocabulary
+    astronomer
+    ```quote
+    a scientist who studies the stars and planets
+    ```
+    ```def
+    astronomy
+    ```
+    - Mr. Lee is an **astronomer**, and he teaches astronomy at the university.
+```
+
+```vocabulary
+    sophisticated
+    ```quote
+    1. having a lot of experience of life, and good judgment about socially important things such as art, fashion etc
+    2. a sophisticated machine, system, method etc is very well designed and very advanced, and often works in a complicated way
+    ```
+    ```def
+    sophistication
+    ```
+    - Hanna believes she has **sophisticated** taste in music and art.
+    - Using **sophisticated** techniques, scientists are able to track the movements of blue whales.
+```
+
+```vocabulary
+    dazzling
+    ```quote
+    1. so bright that you cannot see for a short time
+    2. very impressive and attractive
+    ```
+    ```def
+    dazzle
+    ```
+    - There was a **dazzling** light show on stage while the rock band played.
+    - Johnston showed a **dazzling** display of football talent.
+```
+
+```vocabulary
+    immense
+    ```quote
+    extremely large
+    ```
+    ```def
+    vast, enormous, tremendous, gigantic, giant, immensely
+    ```
+    - The **Three Gorges Dam** is an **immense** dam that spans the **Yangtze River**.
+    - People who travel by rail still read an **immense** amount.
+```
+
+```vocabulary
+    pyramid (`pɪrəmɪd)
+    ```quote
+    1. a large stone building with four triangular walls that slope in to a point at the top, especially in Egypt and Central America
+    2. a system, society, company etc that is organized in different levels, so that there is a small number of people at the top and a much larger number of people at the bottom
+    3. a solid shape with a square or triangular base and sloping sides that meet in a point at the top
+    ```
+    ```def
+    pyramidal
+    ```
+    - The Great **Pyramid** of Giza in Egypt is thought to be over 4,500 years old.
+    - At the bottom of the **pyramid** are the poor.
+```
+
+```vocabulary
+    construct
+    ```quote
+    1. to build something such as a house, bridge, road etc
+    2. to form something such as a sentence, argument, or system by joining words, ideas etc together
+    ```
+    ```def
+    construction, constructive, reconstruct
+    ```
+    - The government wants to **construct** more environmentally friendly buildings within the city.
+    - The scientist spent years **constructing** his theory of the origins of life.
+```
+
+```vocabulary
+    inhabit
+    ```quote
+    to live in a particular place
+    ```
+    ```def
+    inhabitant, inhabited, uninhabited, habitat, habitable 
+    ```
+    - The Basques (巴斯克人) **inhabit** a region between Spain and France.
+    - Some of the rare species that **inhabit** the area are under threat.
+```
+
+```vocabulary
+    startling
+    ```quote
+    very unusual or surprising
+    ```
+    ```def
+    amazing, astonishing, incredible, marvelous, spectacular, stunning, unbelievable, startle
+    ```
+    - The researcher made a **startling** discovery while studying the bacteria.
+    - It is **startling** to read that his father never visited him in hospital.
+```
+
+```vocabulary
+    slavery
+    ```quote
+    1. the state of being forced to work as a slave
+    2. the practice of owning and forcing people to work as slaves
+    ```
+    ```def
+    slave, enslave, enslavement
+    ```
+    - In the United States, **slavery** was abolished during the Civil War.
+```
+
+```vocabulary
+    execute (`eksəkjuːt)
+    ```quote
+    1. to kill someone, especially legally as a punishment
+    2. to do something that has been carefully planned 
+    3. an offensive word used to describe people who have a simple traditional way of life
+    ```
+    ```def
+    executive (ɪɡ`zekjətɪv), execution
+    ```
+    - The criminal was **executed** for murdering the jewelry shop owner.
+    - In order to **execute** the program, simply press the enter key.
+    - The job involves **drawing up** and **executing** a plan of nursing care.
+```
+
+```vocabulary
+    savage
+    ```quote
+    1. very violent or cruel
+    2. very severe
+    3. an offensive word used to describe people who have a simple traditional way of life
+    ```
+    ```def
+    barbarian, vicious
+    ```
+    - Many early explorers who arrived in America believed the orininal inhabitants to be **savages** in need of **civilization**.
+    - There are **savage** animals such as bears in the national park, so you have to be very careful when you hike.
+    - The article was a **savage** attack on the government's record.
+    - He was **savagely** attacked and beaten.
+```
+
+```vocabulary
+    inherent
+    ```quote
+    a quality that is inherent in something is a natural part of it and cannot be separated from it
+    ```
+    ```def
+    inherently
+    ```
+    - I’m afraid the problems you mention are **inherent** in the system.
+    - I have to stdy a lot because neuroscience is an **inherently** difficult subject.
+```
+
 ```vocabulary
     gondolier (ɡɒndə`lɪə)
     ```quote
@@ -146,7 +362,7 @@ veritable, tempt, sack, exceptional, nanny, shawl, clams, eggplant, blaze, glow,
 ```
 
 ```vocabulary
-    canal
+    canal (kə`næl)
     ```quote
     a long passage dug into the ground and filled with water, either for boats to travel along, or to take water to a place
     ```
