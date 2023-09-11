@@ -25,13 +25,12 @@ tag: personal-note, courses
 - 出席
   - M3（星期一 10:10-11:00），預計第三週起每兩週舉行一次小考，要出席
   - 沒有小考的週次不需出席
-- 其他
-  - 9/11(一) 為本課程的第一堂課，當天採「線上同步」方式進行，有一個線上測驗。
-  - 會議連結:
-    - 單號: https://meet.google.com/tpc-sast-gbg
-    - 雙號: https://meet.google.com/axn-kuac-ruk
-  - 線上測驗:
-      - 時間：11:00-11:15
-      - 連結會在會議中公布
-      - 缺席者總成績扣10分
-      - 測驗分數不影響課程總成績
+- 內容
+  - Concurrency
+    - Race conditions, Deadlocks, ...
+  - Resource Management
+    - Arbitration vs. Virtualization
+  - System Design
+    - Abstraction vs. Monolith
+  - Policy vs. Mechanism
+    - Performance Analysis

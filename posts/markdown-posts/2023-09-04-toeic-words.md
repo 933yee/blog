@@ -29,7 +29,7 @@ veritable, tempt, sack, exceptional, nanny, shawl, clams, eggplant, blaze, glow,
     ```quote
     an object that is made by a person, especially something of historical or cultural interest
     ```
-    - The **artifacts** from the emperor's tomb are now on dispaly in the museum.
+    - The **artifacts** from the emperor's tomb are now **on dispaly** in the museum.
 ```
 
 ```vocabulary
@@ -41,7 +41,7 @@ veritable, tempt, sack, exceptional, nanny, shawl, clams, eggplant, blaze, glow,
     ```def
     mystical, mystery
     ```
-    - Stonehenge is one of the most mysterious **monuments** in the world because no one can figure out the reason for its construction.
+    - Stonehenge is one of the most **mysterious** **monuments** in the world because no one can figure out the reason for its construction.
     - I decided to find out more about my **mysterious** new neighbor.
 ```
 
@@ -185,7 +185,6 @@ veritable, tempt, sack, exceptional, nanny, shawl, clams, eggplant, blaze, glow,
     ```quote
     1. to kill someone, especially legally as a punishment
     2. to do something that has been carefully planned 
-    3. an offensive word used to describe people who have a simple traditional way of life
     ```
     ```def
     executive (ɪɡ`zekjətɪv), execution
@@ -220,7 +219,7 @@ veritable, tempt, sack, exceptional, nanny, shawl, clams, eggplant, blaze, glow,
     inherently
     ```
     - I’m afraid the problems you mention are **inherent** in the system.
-    - I have to stdy a lot because neuroscience is an **inherently** difficult subject.
+    - I have to study a lot because neuroscience is an **inherently** difficult subject.
 ```
 
 ```vocabulary
