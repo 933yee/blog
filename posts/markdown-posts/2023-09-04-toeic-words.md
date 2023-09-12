@@ -6,7 +6,7 @@ category: toeic
 frontCover: study.png
 tag: toeic
 ---
-veritable, tempt, sack, exceptional, nanny, shawl, clams, eggplant, blaze, glow, sparkle, twinkle, bearing trays, delicate, vicious, civilization, executive, monument, tsunami
+veritable, tempt, sack, exceptional, nanny, shawl, clams, eggplant, blaze, glow, sparkle, twinkle, bearing trays, delicate, vicious, civilization, executive, monument, tsunami, primitive, set off
 
 ```vocabulary
     glyph (ɡlɪf)
