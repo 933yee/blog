@@ -1,10 +1,10 @@
 ---
 date: 2023-09-14
-title: 機器學習筆記
-subtitle: 資工選修
-category: personal-note
-frontCover: https://kuochuanpan.github.io/ceag/images/logo.png
-tag: personal-note, courses
+title: 機器學習筆記 (1)
+subtitle: ML、DL 基本概念
+category: ML
+frontCover: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9d8Ow4KIqpTLoH9uOKyiS-lKUNgheHP_H3yp13QoCFSK3avHItP0mOkcAbk1IO6qQmA8&usqp=CAU
+tag: personal-note, courses, ML
 ---
 ```quote
 李弘毅老師機器學習教學影片筆記
@@ -112,7 +112,7 @@ Piecewise-Linear.png
 ```
 - 其中 **藍色線段** 叫做 hard sigmoid，可以用 sigmoid function 表示
 
-- 同樣也可以加入更多 feature
+- 同樣也可以加入更多 features
   - `latex y = b + \sum_{i} c_i \cdot sigmoid(b_i + \sum_{j} w_{ij} x_{j})`
 
 - 把上述公式以矩陣表示，會變成
@@ -191,5 +191,5 @@ deep-learning.png
 
 - 原本只有一層時，得到一個 neuron 的結果是 `latex \textbf{a} = \sigma(\textbf{b} + \textbf{W} \textbf{x})`，可以把 `latex \textbf{a}` 當成 input，再做一次，得到 `latex \textbf{a}^\prime = \sigma(\textbf{b}^\prime + \textbf{W}^\prime \textbf{a})`
 - 需要增加更多 unknown parameters
-- 太多層可能會發生 **Overfitting**
+- 可能會發生 **Overfitting**
   - Better on training data, worse on unseen data
