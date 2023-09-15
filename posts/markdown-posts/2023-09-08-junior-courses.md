@@ -34,3 +34,32 @@ tag: personal-note, courses
     - Abstraction vs. Monolith
   - Policy vs. Mechanism
     - Performance Analysis
+
+
+## 計算方法設計
+- 評分方式
+  - 點名、隨堂考: ~4%
+  - 小考: ~ 26% 
+    - 10/6, 10/20, 11/3, 11/24, 12/8, 12/22
+  - 期中考: ~ 35% 
+    - 11/10
+  - 期末考: ~ 35% 
+    - 1/5
+  - 停課 
+    - 9/29, 11/15, 12/6
+- 內容
+  - Part I: Foundations
+    - Growth of Function, Divide-and-Conquer
+    - important in the analysis part
+  - Part II: Sorting **(self-learning)** & Order 
+    - Statistics
+  - Part IV: Advanced Design and Analysis Techniques
+    - Dynamic Programming
+    - Greedy Algorithms
+    - Amortized Analysis
+  - Part VI: Graph Algorithms 
+    - Minimum Spanning Tree
+    - Shortest Path
+  - Part VII: Selected Topics
+    - NP-Completeness 
+    - Approximation Algorithms
