@@ -62,4 +62,41 @@ src: https://r888800009.github.io/network-security/net-sec1/#nist-%E5%B0%8D%E9%9
 - It helps to trace a security breach to a responsible user
 
 
+<br>
+
+## OSI Security Architecture
+
+### Security attack
+- Any action that compromises the security of information owned by an organization (or a person)
+#### Passive attacks
+- eavesdropping on, or monitoring of, transmissions
+- Goal of the opponent is to obtain information that is being transmitted
+- Types
+  - The release of message contents
+  - Traffic analysis
+    - Location
+    - IP
+    - Frequency and length of messages
+- These attacks are very hard to detect
+
+#### Active attacks
+- Involve some modification of the data or the creation of a false data
+- Difficult to prevent because of the wide variety of potential physical, software, and network vulnerabilities
+- Goal is to detect attacks and to recover from any disruption or delays caused by them
+##### Masquerade
+- Happens when one user pretends to be a different user
+- Use stolen passwords to login as victim
+- Capture a valid authentication sequence and replay them to login as victim
+- Phishing attacks on online bank accounts
+##### Replay
+- Replay of messages
+### Security mechanism
+- A mechanism that is designed to detect, prevent, or recover from a security attack. E.g., encryption
+
+### Security service
+- A service that enhances the security of the systems and the information tansfer of an organization
+- The services make use of one or more security mechanisms to provide the service
+
+
 SHA
+密碼雜湊函數cryptographic hash function

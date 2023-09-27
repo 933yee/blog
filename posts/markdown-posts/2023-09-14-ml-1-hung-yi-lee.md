@@ -182,6 +182,7 @@ Piecewise-Linear.png
 
 - Epoch
   - **1 epoch = see all the batches once**
+  - **shuffle after each epoch**
 
 
 ## Deep Learning basic
