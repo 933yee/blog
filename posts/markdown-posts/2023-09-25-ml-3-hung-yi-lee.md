@@ -93,7 +93,7 @@ model-example.png
 #### Momentum
 - Movement: **movement of last step** minus **gradient at present**
 - Example:
-  - starting at `latex \theta`
+  - starting at `latex \theta^0`
   - movement `latex m^0 = 0`
   - compute gradient `latex g^0`
   - movement `latex m^1 = \lambda m^0 - \eta g^0`
