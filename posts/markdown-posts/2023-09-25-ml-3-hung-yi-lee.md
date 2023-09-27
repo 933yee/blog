@@ -1,5 +1,5 @@
 ---
-date: 2023-09-15
+date: 2023-09-25
 title: 機器學習筆記 (3)
 subtitle: ML model issues
 category: ML
@@ -27,7 +27,7 @@ https://www.youtube.com/watch?v=QW6uINn7uGk&list=PLJV_el3uVTsMhtt7_Y6sgTHGHp1Vb2
     - `latex H_{ij} = \frac{\partial^{2}}{\partial{\theta_i}\partial{\theta_j}} L(\theta^{\prime})`
 
 - 如果是在 critical point，**g** 會是 0，所以只剩下前面和後面項
-- 以 `latex v^{T}Hv 表示 (\theta - \theta^{\prime})^{T}H(\theta-\theta^{\prime})`
+- 以 `latex v^{T}Hv` 表示 `latex (\theta - \theta^{\prime})^{T}H(\theta-\theta^{\prime})`
   - 如果 for all v， `latex v^{T}Hv > 0`，`latex L(\theta) > L(\theta^{\prime})`，**Local minima**
   - 如果 for all v， `latex v^{T}Hv < 0`，`latex L(\theta) < L(\theta^{\prime})`，**Local maxima**
   - 如果有時 `latex v^{T}Hv < 0` ，有時 `latex v^{T}Hv > 0` ，**Saddle point**
@@ -55,7 +55,7 @@ model-example.png
   - `latex \frac{\partial{L}}{\partial{w_2}} = 2(1 - w_1 w_2)(-w_1) = 0`
 - One critical point is `latex w_1` = 0, `latex w_2` = 0
 - Hessian H:
-  - `latex \frac{\partial^{2}L}{\partial{{w_1}^{2}}} = 2(-w_2)(-w_2)`
+  - `latex \frac{\partial^{2}L}{\partial {w_1}^2} = 2(-w_2)(-w_2)`
   - `latex \frac{\partial^{2}L}{\partial{w_1}\partial{w_2}} = -2 + 4 w_1 w_2`
   - `latex \frac{\partial^{2}L}{\partial{w_2}\partial{w_1}} = -2 + 4 w_1 w_2`
   - `latex \frac{\partial^{2}L}{\partial{{w_2}^{2}}} = 2(-w_1)(-w_1)`
@@ -69,7 +69,7 @@ model-example.png
 - ```latex 
     \lambda_2 = -2 ,\quad \textbf u = 
     \begin{bmatrix}
-      1\\
+      1 \\
       1
     \end{bmatrix} 
   ```
@@ -77,3 +77,27 @@ model-example.png
 - This method is seldom used in practice
 
 <br>
+
+### Batch and Momentum
+#### Batch
+- With **GPU**
+  - larger batch size does not require longer time to compute **gradient** unless batch size is too large
+  - smaller batch requires longer time for one **epoch**
+##### Small batch
+- **noisy**
+  - better for training
+##### Large batch
+- **powerful**, **faster**
+
+
+#### Momentum
+- Movement: **movement of last step** minus **gradient at present**
+- Example:
+  - starting at `latex \theta^0`
+  - movement `latex m^0 = 0`
+  - compute gradient `latex g^0`
+  - movement `latex m^1 = \lambda m^0 - \eta g^0`
+  - move to `latex \theta^1 = \theta^0 + m^1`
+  - compute gradient `latex g^1`
+  - movement `latex m^2 = \lambda m^1 - \eta g^1`
+  - move to `latex \theta^2 = \theta^1 + m^2`
