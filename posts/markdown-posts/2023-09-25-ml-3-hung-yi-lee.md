@@ -77,27 +77,3 @@ model-example.png
 - This method is seldom used in practice
 
 <br>
-
-### Batch and Momentum
-#### Batch
-- With **GPU**
-  - larger batch size does not require longer time to compute **gradient** unless batch size is too large
-  - smaller batch requires longer time for one **epoch**
-##### Small batch
-- **noisy**
-  - better for training
-##### Large batch
-- **powerful**, **faster**
-
-
-#### Momentum
-- Movement: **movement of last step** minus **gradient at present**
-- Example:
-  - starting at `latex \theta^0`
-  - movement `latex m^0 = 0`
-  - compute gradient `latex g^0`
-  - movement `latex m^1 = \lambda m^0 - \eta g^0`
-  - move to `latex \theta^1 = \theta^0 + m^1`
-  - compute gradient `latex g^1`
-  - movement `latex m^2 = \lambda m^1 - \eta g^1`
-  - move to `latex \theta^2 = \theta^1 + m^2`
