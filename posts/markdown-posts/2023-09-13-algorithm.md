@@ -6,7 +6,9 @@ category: personal-note
 frontCover: https://miro.medium.com/v2/resize:fit:2000/1*GdCKWdjHLUGhkPoXjI6vIQ.jpeg
 tag: personal-note, courses
 ---
-## Chapter 1
+## Chapter 1 
+
+<br>
 
 ### Algorightm
 - Any well-defined computational procedure that takes some value, or set of values, as **input** and produces some value, or set of values, as **output**
@@ -17,43 +19,15 @@ tag: personal-note, courses
 
 <br>
 
-### Exercises
-- **1.1-1 Describe your own real-world example that requires sorting. Describe one that requires finding the shortest distance between two points**
-  - 倉庫找手機型號、送貨
-
-- **1.1-2 Other than speed, what other measures of efûciency might you need to consider in a real-world setting?**
-  - 效能使用率、彈性、維護性
-     
-- **1.1-3 Select a data structure that you have seen, and discuss its strengths and limitations.**
-  - hash table，可以快速插入、找尋資料，但是可能會有 collision 且依賴 hash function
-  
-- **1.1-4 How are the shortest-path and traveling-salesperson problems given above similar? How are they different?**
-  - 兩者都是要找尋最佳解，前者是找兩點之間的最短距離，後者是找尋經過所有點的最小距離，且最後要回到原點 
-  
-- **1.1-5 Suggest a real-world problem in which only the best solution will do. Then come up with one in which the best solution is good enough.**
-  - 航空調度效率、導航路線 
-
-- **1.1-6 Describe a real-world problem in which sometimes the entire input is available before you need to solve the problem, but other times the input is not entirely available in advance and arrives over time.**
-  - 道路壅塞偵測，原本是只透過車流量、時間去判定，如果突然發生車禍，那結果會不如預期 
-
-- **1.2-1 Give an example of an application that requires algorithmic content at the application level, and discuss the function of the algorithms involved.**
-  - youtube，影片推薦演算法、廣告推薦演算法 
-
-- **1.2-2 Suppose that for inputs of size n on a particular computer, insertion sort runs in `latex 8n^2` steps and merge sort runs in `latex 64n \lg({n})` steps. For which values of n does insertion sort beat merge sort?**
-  - `latex 2\le n\le43`
-
-- **1.2-3 What is the smallest value of n such that an algorithm whose running time is `latex 100n^2` runs faster than an algorithm whose running time is `latex 2n` on the same machine?**
-  - `latex n = 15` 
-
-### Problems
-- **1-1 Comparison of running times For each function f .n/ and time t in the following table, determine the largest size n of a problem that can be solved in time t, assuming that the algorithm to solve the problem takes f .n/ microseconds.**
-  
 
 ## Chapter 2
+
+<br>
+
 ### Insertion Sort
 ```cpp
-for i D 2 to n
-    key D A[i]
+for i = 2 to n
+    key = A[i]
     // Insert A[i] into the sorted subarray A[1:i-1]
     j = j - 1
     while j > 0 and A[j] > key
@@ -64,11 +38,64 @@ for i D 2 to n
 
 #### Correctness of Insertion Sort
 **Three properties for Loop Invariant:**
-– **Initialization**: It is true prior to the first iteration of the 
-loop
-– **Maintenance**: If it is true before an iteration of the loop, it 
-remains true before the next iteration
-– **Termination**: When the loop terminates, array is sorted
+- **Initialization**: It is true prior to the first iteration of the loop
+- **Maintenance**: If it is true before an iteration of the loop, it remains true before the next iteration
+- **Termination**: When the loop terminates, array is sorted
 
 #### Loop invariant for Insertion sort: 
 At the start of each iteration of the for loop of lines 1-8, the subarray A[1..j-1] consists of the elements originally subarray A[1..j-1], but in sorted order. After the lines 4-8, the subarray A[1..j] consists of the elements originally subarray A[1..j] in sorted order.
+
+#### Running Time
+- In most CS research, we concentrate on worst-case time
+  - Gives an upper bound of running time
+  - Worst case occurs fairly often
+- **Remark**: Some people also study average-case running time (they assume input is drawn randomly)
+
+
+### Merge Sort 
+- **Divide and Conquer**
+  - Divide a big problem into smaller subproblem
+  - Solve (Conquer) smaller subproblems recursively
+  - Combine the results to solve the original one  
+- Divide list to two halves, A and B
+- Sort A using Merge Sort
+- Sort B using Merge Sort
+- Merge sorted lists of A and B
+
+```cpp
+if p >= r: return
+q = (p + r) / 2
+Merge_Sort(A, p, q)
+Merge_Sort(A, q+1, r)
+Merge(A, p, q, r)
+```
+- Merge Sort is **asymptotically** faster than Insertion Sort
+
+<br>
+
+## Chapter 3
+
+<br>
+
+### O-notation
+- O-notation characterizes an **upper bound** on the asympototic behavior of a function
+- it says that a function grows **no faster** than a certain rate. This rate is based on the highest order term
+- `latex O(g(n)) = {f(n): \exists \; c, \; n_0}` such that `latex 0 \le f(n) \le cg(n) \; \forall \; n \ge n_0`
+
+### ꭥ-notation
+- ꭥ-notation characterizes a **lower bound** on the asymptotic behavior of a function.
+- `latex \Omega(g(n)) = {f(n): \exists \; c, \; n_0}` such that `latex 0 \le cg(n) \le f(n) \; \forall \; n \ge n_0`
+
+### Θ-notation
+- Θ-notation characterizes a **tight bound** on the asympototic behavior of a function
+- A function grows precisely at a certain rate, again based on the highest-order term
+- If a function is both 𝑂(𝑓(𝑛)) and ꭥ(𝑓(𝑛)), then the function is Θ(𝑓(𝑛))
+- `latex \Theta(g(n)) = {f(n): \exists \; c_1, c_2, \; n_0}` such that `latex 0 \le c_1 g(n) \le f(n) \le c_2 g(n) \; \forall \; n \ge n_0`
+
+### o-notation
+- `latex O(g(n)) = {f(n): \exists \; c, \; n_0}` such that `latex 0 \le f(n) < cg(n) \; \forall \; n \ge n_0`
+- `latex \lim_{n\to\infty} \frac{f(n)}{g(n)} = 0`
+
+### o-notation
+- `latex O(g(n)) = {f(n): \exists \; c, \; n_0}` such that `latex 0 \le cg(n) < f(n) \; \forall \; n \ge n_0`
+- `latex \lim_{n\to\infty} \frac{f(n)}{g(n)} = \infty`
