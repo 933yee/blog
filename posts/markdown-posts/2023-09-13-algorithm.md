@@ -99,3 +99,37 @@ Merge(A, p, q, r)
 ### o-notation
 - `latex O(g(n)) = {f(n): \exists \; c, \; n_0}` such that `latex 0 \le cg(n) < f(n) \; \forall \; n \ge n_0`
 - `latex \lim_{n\to\infty} \frac{f(n)}{g(n)} = \infty`
+
+<br>
+
+## Chapter 4
+
+<br>
+
+### Maximum subarray problem
+#### FIND-MAX-CROSSING-SUBARRAY (A, low, mid, high)
+```cpp
+left_sum = -∞ // Find a maximum subarray of the form A[i..mid] 
+sum = 0
+for i = mid downto low
+  sum = sum + A[i ]
+  if sum > left_sum
+    left_sum = sum
+    max_left = i
+
+right_sum = - ∞ // Find a maximum subarray of the form A[mid + 1 .. j ]
+sum =0
+for j = mid +1 to high
+  sum = sum + A[j]
+  if sum > right_sum
+    right_sum = sum
+    max_right = j
+// Return the indices and the sum of the two subarrays
+Return (max_left, max_right, left_sum + right_sum)
+```
+
+#### FIND-MAX-SUBARRAY (A, low, high)
+```cpp
+if low == high
+  
+```
