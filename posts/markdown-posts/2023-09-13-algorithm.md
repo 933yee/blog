@@ -125,11 +125,65 @@ for j = mid +1 to high
     right_sum = sum
     max_right = j
 // Return the indices and the sum of the two subarrays
-Return (max_left, max_right, left_sum + right_sum)
+return (max_left, max_right, left_sum + right_sum)
 ```
 
-#### FIND-MAX-SUBARRAY (A, low, high)
+#### FIND-MAXIMUM-SUBARRAY (A, low, high)
 ```cpp
 if low == high
-  
+  return (low, high, A[low])
+else
+  mid = (low + high) / 2
+  (left_low, left_high, left_sum) = FIND_MAXIMUM_SUBARRAY(A, low, mid)
+  (right_low, right_high, right_sum) = FIND_MAXIMUM_SUBARRAY(A, mid + 1, high)
+  (cross_low, cross_high, cross_sum) = FIND_MAX_CROSSING_SUBARRAY(A, low, mid, high)
+
+if left_sum >= right_sum and left_sum >= cross_sum
+  return (left_low, left_high, left_sum)
+else if right_sum >= left_sum and right_sum >= cross_sum
+  return (right_low, right_high, right_sum)
+else
+  return (cross_low, cross_high, cross_sum)
 ```
+
+### Matrix multiplication
+#### Strassen’s method
+- Steps
+  - `latex S_1 = B_{12} - B_{22}, \; S_2 = A_{11} - A_{12}, \; S_3 = A_{21} - A_{22}, \\ S_4 = B_{21} - B_{11}, \; S_5 = A_{11} - A_{22}, \; S_6 = B_{11} - B_{22}, \\ S_7 = A_{12} - A_{22}, \; S_8 = B_{21} - B_{22}, \; S_9 = A_{11} - A_{21}, \\ S_{10} = B_{11} - B_{12}`
+
+  - `latex P_1 = A_{11}S_1, \; P_2 = B_{22}S_2 \; P_3 = B_{11}S_3, \\ P_4 = A_{22}S_4  \; P_5 = S_5S_6  \; P_6 = S_7S_8`
+
+  - `latex C_{11} = P_5 + P_4 - P_2 + P_6, \\ C_{12} = P_1 + P_2, \\ C_{21} = P_3 + P_4 , \\ C_{22} = P_5 + P_1 - P_3 - P_7`
+
+- Time Complexity
+  - `latex T(n) = 7T(n/2) + \Theta(n^2) \\ \qquad\; = \Theta(n^{lg 7}) \\\qquad\;= \Theta(n^{2.81})`
+
+- Strassen’s method is based on the fact that we can multiply two 2  2 matrices using only 7 multiplications (instead of 8)
+
+
+### Substitution Method
+1. `latex T(n) = 2T(\lfloor n/2 \rfloor) + n` with `latex T(1) = 1`
+     - Guess `latex T(n) = O(n lgn)`
+     - Show it by **induction**
+       - for `latex n = 2`, `latex T(2) = 4`
+       - for `latex c = 2`, `latex T(2) \le c n lgn`
+     - Base case: `latex n_0 = 2` hold
+     - Induction case
+       - Assume the guess is true for all `latex n = 2, 3, ..., k`
+       - For `latex n = k + 1`, we have
+         - `latex T(n) = 2T(\lfloor n/2 \rfloor) + n \\ \qquad\; \le 2c\lfloor n/2 \rfloor lg \lfloor n/2 \rfloor + n \\\qquad\; \le c n lg n/2 + n = c n lgn - c n + n \\ \qquad\; \le c n lg n`
+
+<br>
+
+2. `latex T(n) = T(\lfloor n/2 \rfloor) + T(\lceil n/2 \rceil) + 1`, `latex T(1) = 1`
+   - 可以發現當 `latex  n = 16 ` 時
+     - `latex T(16) = 2T(8) + 1 \\\qquad\;\; = 4T(4) + 2 + 1 \\\qquad\;\; = 8T(2) + 4 + 2 + 1 \\\qquad\;\; = 16T(1) + 8 + 4 + 2 + 1`
+     - 當 n 夠大時， `latex T(1)` 項可以被省略，所以可以猜 `latex T(n) = O(n)`
+   - Base case: for `latex c = 1`, `latex T(1) = 1 \le cn = 1`
+   - Inductive case: 
+     - `latex T(n) = T(\lfloor n/2 \rfloor) + T(\lceil n/2 \rceil) + 1 \\\qquad\; = c\lfloor n/2 \rfloor + c \lceil n/2 \rceil + 1 \\\qquad\; = cn + 1 \not\le cn` 
+   - Solution:  prove a **stronger** statement
+     - `latex T(n) \le cn - b`
+   - Base case: for `latex c = 2, \; b = 1`, `latex T(2) = 3 \le cn - b = 3`
+   - Improved Inductive case:
+     - `latex T(n) = T(\lfloor n/2 \rfloor) + T(\lceil n/2 \rceil) + 1 \\\qquad\; = c\lfloor n/2 \rfloor - b + c \lceil n/2 \rceil - b + 1 \\\qquad\; = cn - b \le cn`, for `latex b \ge 1`
