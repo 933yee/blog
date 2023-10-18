@@ -1,6 +1,6 @@
 ---
 date: 2023-09-13
-title: 演算法筆記
+title: 演算法筆記 (Chapter 1 ~ 4)
 subtitle: 大三資工上學期必修
 category: personal-note
 frontCover: https://miro.medium.com/v2/resize:fit:2000/1*GdCKWdjHLUGhkPoXjI6vIQ.jpeg

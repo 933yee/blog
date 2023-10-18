@@ -3,7 +3,7 @@ date: 2023-09-20
 title: Fermat's little theorem
 subtitle: 費馬小定理
 category: personal-note
-frontCover: https://www.ionos.com/digitalguide/fileadmin/DigitalGuide/Teaser/operating-system-t.jpg
+frontCover: https://media.istockphoto.com/id/1219382595/vector/math-equations-written-on-a-blackboard.jpg?s=612x612&w=0&k=20&c=ShVWsMm2SNCNcIjuWGtpft0kYh5iokCzu0aHPC2fV4A=
 tag: cp
 ---
 
