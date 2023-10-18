@@ -23,7 +23,7 @@ import './Main.css';
 
 function Main() {
     const [inputSearchText, setinputSearchText] = useState('');
-    const [hideLeftBar, setHideLeftBar] = useState(false); // the hide button on the top
+    const [hideLeftBar, setHideLeftBar] = useState(true); // the hide button on the top
 
     const handleClickHomepage = () => {
         window.location.href = '/#';
@@ -153,7 +153,15 @@ function Main() {
                         </div> */}
                         <Route path='/' exact render={() =>
                             <div className='page'>
-                                <Post fileName={`2023-09-08-blog-introduce.md`} index={0} />
+                                {/* <img
+                                    src='./image/courses.png'
+                                    style={{
+                                        width: '100%'
+                                        // objectFit: 'contain',
+                                        // objectPosition: 'center'
+                                    }}>
+                                </img> */}
+                                {/* <Post fileName={`2023-09-08-blog-introduction.md`} index={0} /> */}
                             </div>}
                         />
                         <Route path='/home' render={() =>

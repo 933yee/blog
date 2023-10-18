@@ -43,6 +43,7 @@ function Post(props) {
     const [imagePath, setImagePath] = useState('');
     const [wordDetailsVisibility, setWordDetailsVisibility] = useState({});
     const index = props.index;
+    const heading = []
 
     useEffect(() => {
         async function fetchData() {
@@ -120,6 +121,31 @@ function Post(props) {
 
     // syntax highlighter
     const renderers = {
+        h1({ node }) {
+            const value = node.children[0].value;
+            heading.push([1, value]);
+            return <h1>{value}</h1>
+        },
+        h2({ node }) {
+            const value = node.children[0].value;
+            heading.push([2, value]);
+            return <h2>{value}</h2>
+        },
+        h3({ node }) {
+            const value = node.children[0].value;
+            heading.push([3, value]);
+            return <h3>{value}</h3>
+        },
+        h4({ node }) {
+            const value = node.children[0].value;
+            heading.push([4, value]);
+            return <h4>{value}</h4>
+        },
+        h5({ node }) {
+            const value = node.children[0].value;
+            heading.push([5, value]);
+            return <h5>{value}</h5>
+        },
         pre({ node, ...props }) {
             try {
                 const language = props.children[0].props.className.replace('language-', '');
@@ -134,102 +160,149 @@ function Post(props) {
 
         },
         code: ({ node, inline, className, children }) => {
-            const language = className ? className.replace('language-', '') : '';
-            const value = children[0] || '';
-            if (language === 'vocabulary') {
-                const lines = value.split('\n');
-                const unindentedLines = lines.map((line) => line.replace(/^\s{4}/, ''));
-                const unindentedValue = unindentedLines.slice(1).join('\n');
-                const word = unindentedLines[0].replace('- #### ', '');
-                return (
-                    <ul>
-                        <h4>
-                            <div style={{
-                                fontSize: '1rem',
-                                color: 'white'
+            if (inline === true) {
+                const content = children[0] || '';
+                const splittedContent = content.split(' ');
+                const language = splittedContent[0];
+                const value = splittedContent.slice(1).join(' ');
+                // console.log(language, value)
+                if (language === 'latex') {
+                    return (
+                        <span style={{ color: 'rgb(255, 255, 128, 0.8)', overflow: 'hidden', whiteSpace: "pre-wrap" }}>
+                            <Latex>{`$${value}$`}</Latex>
+                        </span>
+                    );
+                } else {
+                    const newValue = value.slice(0, -1);
+                    return (
+                        <SyntaxHighlighter
+                            language={language}
+                            style={codeStyle}
+                            showLineNumbers='True'
+                            // wrapLongLines='True'
+                            wrapLines='True'
+                            className="code-syntax"
+                            customStyle={{
+                                backgroundColor: "rgba(0, 0, 0, 0.2)",
+                                margin: "1rem 0 0 0"
                             }}
-                                className='btn btn-outline-dark btn-sm'
-                                onClick={() => handleVocabularyClicked(word)}>
-                                {wordDetailsVisibility[word] ? <AiFillEyeInvisible /> : <AiFillEye />}
-                            </div>
-                            {` ${word}`}
-                        </h4>
-                        <div style={{ display: wordDetailsVisibility[word] ? 'block' : 'none' }}>
-                            <ReactMarkdown
-                                remarkPlugins={[gfm]}
-                                rehypePlugins={[[rehypeRaw]]}
-                                components={renderers}
-                                children={unindentedValue}
-                            />
-                        </div>
-                    </ul>
-                );
-            } else if (language === 'youtube') { // 處理YouTube影片
-                return (
-                    <div style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        overflow: 'hidden'
-                    }} ><ReactPlayer url={value} controls /></div>
-                );
-            } else if (language === 'def' || language === 'definition') {
-                return (
-                    <div style={{ display: "flex", color: "rgb(255, 255, 255, 0.6)", paddingLeft: "0.5rem", whiteSpace: "pre-wrap" }}>
-                        »<div style={{ paddingLeft: "0.5rem" }}>{value}</div>
-                    </div >
-                );
-            } else if (language === 'quote') {
-                return (
-                    <div style={{ paddingLeft: "1em", borderLeft: "4px solid rgb(255, 255, 255, 0.2)", color: "rgb(255, 255, 255, 0.5)", whiteSpace: "pre-wrap" }}>
-                        {value}
-                    </div>
-                );
-            } else if (language === 'img') {
-                const folderName = props.fileName.split('.')[0] + '/';
-                return (
-                    <img
-                        src={`${postImagesBaseUrl}${folderName}${value}`}
-                        style={{
-                            objectFit: 'cover',
-                            objectPosition: 'center',
-                            width: '70%',
-                            height: '70%',
-                            margin: 'auto',
-                            display: 'block'
-                        }}
-                    ></img>
-                );
-            } else if (language === 'latex') {
-                return (
-                    <div style={{ color: 'rgb(255, 255, 128, 0.8)', overflow: 'hidden', whiteSpace: "pre-wrap" }}>
-                        <Latex>{`$${value}$`}</Latex>
-                    </div>
-                );
+                        >
+                            {newValue}
+                        </SyntaxHighlighter>
+                    );
+                }
             } else {
-                const newValue = value.slice(0, -1);
-                return (
-                    <SyntaxHighlighter
-                        language={language}
-                        style={codeStyle}
-                        showLineNumbers='True'
-                        // wrapLongLines='True'
-                        wrapLines='True'
-                        className="code-syntax"
-                        customStyle={{
-                            backgroundColor: "rgba(0, 0, 0, 0.2)",
-                            margin: "1rem 0 0 0"
-                        }}
-                    >
-                        {newValue}
-                    </SyntaxHighlighter>
-                );
+                const language = className ? className.replace('language-', '') : '';
+                const value = children[0] || '';
+                if (language === 'vocabulary') {
+                    const lines = value.split('\n');
+                    const unindentedLines = lines.map((line) => line.replace(/^\s{4}/, ''));
+                    const unindentedValue = unindentedLines.slice(1).join('\n');
+                    const word = unindentedLines[0].replace('- #### ', '');
+                    return (
+                        <div>
+                            <div style={{ display: 'flex' }}>
+                                <div style={{
+                                    fontSize: '1rem',
+                                    color: 'white'
+                                }}
+                                    className='btn btn-outline-dark btn-sm'
+                                    onClick={() => handleVocabularyClicked(word)}>
+                                    {wordDetailsVisibility[word] ? <AiFillEyeInvisible /> : <AiFillEye />}
+                                </div>
+                                <div style={{
+                                    fontSize: '1.25rem',
+                                    color: 'rgb(209, 196, 132)',
+                                    textShadow: '2px 2px rgba(255, 255, 255, 0.1)',
+                                    fontWeight: '500'
+                                }}>
+                                    {` ${word}`}
+                                </div>
+                            </div>
+                            <div style={{ display: wordDetailsVisibility[word] ? 'block' : 'none' }}>
+                                <ReactMarkdown
+                                    remarkPlugins={[gfm]}
+                                    rehypePlugins={[[rehypeRaw]]}
+                                    components={renderers}
+                                    children={unindentedValue}
+                                />
+                            </div>
+                        </div>
+                    );
+                } else if (language === 'youtube') { // 處理YouTube影片
+                    return (
+                        <div style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            overflow: 'hidden'
+                        }} ><ReactPlayer url={value} controls /></div>
+                    );
+                } else if (language === 'def' || language === 'definition') {
+                    return (
+                        <div style={{ display: "flex", color: "rgb(255, 255, 255, 0.6)", paddingLeft: "0.5rem", whiteSpace: "pre-wrap" }}>
+                            »<div style={{ paddingLeft: "0.5rem" }}>{value}</div>
+                        </div >
+                    );
+                } else if (language === 'quote') {
+                    return (
+                        <div style={{ borderLeft: "4px solid rgb(255, 255, 255, 0.2)", color: "rgb(255, 255, 255, 0.5)", whiteSpace: "pre-wrap", marginTop: "5px" }}>
+                            <div style={{ marginLeft: "1em", }}>{value}</div>
+                        </div>
+                    );
+                } else if (language === 'img') {
+                    const folderName = props.fileName.split('.')[0] + '/';
+                    return (
+                        <img
+                            src={`${postImagesBaseUrl}${folderName}${value}`}
+                            className='content-image'
+                        ></img>
+                    );
+                } else if (language === 'latex') {
+                    return (
+                        <div style={{ color: 'rgb(255, 255, 128, 0.8)', overflowX: 'auto', overflowY: 'hidden' }}>
+                            <Latex>{`$\\begin{aligned}\n${value}\n\\end{aligned}$`}</Latex>
+                        </div>
+                    );
+                } else {
+                    const newValue = value.slice(0, -1);
+                    return (
+                        <SyntaxHighlighter
+                            language={language}
+                            style={codeStyle}
+                            showLineNumbers='True'
+                            // wrapLongLines='True'
+                            wrapLines='True'
+                            className="code-syntax"
+                            customStyle={{
+                                backgroundColor: "rgba(0, 0, 0, 0.2)",
+                                margin: "1rem 0 0 0"
+                            }}
+                        >
+                            {newValue}
+                        </SyntaxHighlighter>
+                    );
+                }
             }
         },
     };
 
+    function generateTableOfContent(index, level, seen) {
+        for (let i = index; i < heading.length; i++) {
+            if (level < heading[i][0]) return;
+            if (seen[i]) {
+                return generateTableOfContent(i + 1, level + 1, seen);
+            }
+        }
+    }
+
+    const getTableOfContent = () => {
+        let seen = Array(heading.length).fill(false);
+        return generateTableOfContent(0, 1, seen);
+    }
 
     const getPostContents = () => {
+        // console.log(heading);
         // console.log(markdownContent)
         if (index === undefined) {
             return (

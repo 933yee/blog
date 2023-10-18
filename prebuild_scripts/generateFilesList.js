@@ -48,13 +48,15 @@ function generateFilesList(updatedFilePath) {
 
             const jsContent = fs.readFileSync(path.join(__dirname, '../src/settings', 'files.js'), 'utf-8');
             const jsonMatch = jsContent.match(/export default (\{[\s\S]*?\});/);
+            if (jsonMatch && Array.isArray(jsonMatch) && jsonMatch.length > 1) {
+                const jsonContent = jsonMatch[1];
+                const srcFilesObject = JSON.parse(jsonContent);
+                Object.keys(postsData).map((fileName) => {
+                    if (srcFilesObject.hasOwnProperty(fileName))
+                        postsData[fileName]['update'] = srcFilesObject[fileName]['update'];
+                });
+            }
 
-            const jsonContent = jsonMatch[1];
-            const srcFilesObject = JSON.parse(jsonContent);
-            Object.keys(postsData).map((fileName) => {
-                if (srcFilesObject.hasOwnProperty(fileName))
-                    postsData[fileName]['update'] = srcFilesObject[fileName]['update'];
-            });
 
             if (updatedFilePath) {
                 const fileName = updatedFilePath.split('\\').pop();
@@ -73,6 +75,8 @@ function generateFilesList(updatedFilePath) {
             // 排序，最近更新的最上面
             const keys = Object.keys(postsData);
             keys.sort((a, b) => {
+                if (postsData[a].update === '') return 1;
+                if (postsData[b].update === '') return -1;
                 const updateTimeA = new Date(postsData[a].update);
                 const updateTimeB = new Date(postsData[b].update);
                 return updateTimeB - updateTimeA;
@@ -81,7 +85,6 @@ function generateFilesList(updatedFilePath) {
             keys.forEach(key => {
                 sortedPostsData[key] = postsData[key];
             });
-
 
             const fileContent = `export default ${JSON.stringify(sortedPostsData, null, 4)};`;
             fs.writeFile(path.join(__dirname, '../src/settings', 'files.js'), fileContent, (err) => {

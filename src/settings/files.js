@@ -1,21 +1,147 @@
 export default {
-    "2023-09-08-discord-music-bot.md": {
-        "date": "2023-09-08",
-        "title": "Discord Music Bot",
-        "subtitle": "simple music bot",
-        "category": "side-projects, discord",
-        "frontCover": "https://i.pinimg.com/474x/34/91/f3/3491f3e50ab6a4d51a348f9cc2419842.jpg",
-        "tag": "side-projects, discord, bot, back-end",
-        "update": "9/9/2023, 12:12:20 AM"
+    "2023-09-20-fermat-little-theorem.md": {
+        "date": "2023-09-20",
+        "title": "Fermat's little theorem",
+        "subtitle": "費馬小定理",
+        "category": "personal-note",
+        "frontCover": "https://media.istockphoto.com/id/1219382595/vector/math-equations-written-on-a-blackboard.jpg?s=612x612&w=0&k=20&c=ShVWsMm2SNCNcIjuWGtpft0kYh5iokCzu0aHPC2fV4A=",
+        "tag": "cp",
+        "update": "10/18/2023, 10:41:10 AM"
     },
-    "2023-09-08-blog-introduction.md": {
-        "date": "2023-09-08",
-        "title": "Blog Introduction",
-        "subtitle": "brief overview of the framework of my blog",
-        "category": "others",
-        "frontCover": "https://images.inc.com/uploaded_files/image/1920x1080/getty_503426092_342208.jpg",
-        "tag": "blog, react",
-        "update": "9/8/2023, 11:56:11 PM"
+    "2023-10-18-algorithm-2.md": {
+        "date": "2023-09-13",
+        "title": "演算法筆記",
+        "subtitle": "大三資工上學期必修",
+        "category": "personal-note",
+        "frontCover": "https://miro.medium.com/v2/resize:fit:2000/1*GdCKWdjHLUGhkPoXjI6vIQ.jpeg",
+        "tag": "personal-note, courses",
+        "update": ""
+    },
+    "2023-10-16-os-sdcc-for-edsim51.md": {
+        "date": "2023-09-24",
+        "title": "作業系統筆記 - SDCC for EdSim51",
+        "subtitle": "8051 微控制器",
+        "category": "personal-note",
+        "frontCover": "https://www.ionos.com/digitalguide/fileadmin/DigitalGuide/Teaser/operating-system-t.jpg",
+        "tag": "personal-note, courses, os",
+        "update": ""
+    },
+    "2023-10-16-os-edsim51-io.md": {
+        "date": "2023-09-24",
+        "title": "作業系統筆記 - EdSim51 I/O",
+        "subtitle": "8051 微控制器",
+        "category": "personal-note",
+        "frontCover": "https://www.ionos.com/digitalguide/fileadmin/DigitalGuide/Teaser/operating-system-t.jpg",
+        "tag": "personal-note, courses, os",
+        "update": ""
+    },
+    "2023-10-13-os-4.md": {
+        "date": "2023-10-13",
+        "title": "作業系統筆記 (4)",
+        "subtitle": "Processes Concept",
+        "category": "personal-note",
+        "frontCover": "https://www.ionos.com/digitalguide/fileadmin/DigitalGuide/Teaser/operating-system-t.jpg",
+        "tag": "personal-note, courses, os",
+        "update": ""
+    },
+    "2023-10-06-algorithm-exercises.md": {
+        "date": "2023-10-06",
+        "title": "演算法筆記",
+        "subtitle": "Exercises",
+        "category": "personal-note",
+        "frontCover": "https://miro.medium.com/v2/resize:fit:2000/1*GdCKWdjHLUGhkPoXjI6vIQ.jpeg",
+        "tag": "personal-note, courses",
+        "update": ""
+    },
+    "2023-10-02-network-security-2.md": {
+        "date": "2023-10-02",
+        "title": "網路安全筆記 (2)",
+        "subtitle": "資工選修",
+        "category": "personal-note",
+        "frontCover": "https://scholarlyoa.com/wp-content/uploads/2020/09/internet-security.jpg",
+        "tag": "personal-note, courses",
+        "update": ""
+    },
+    "2023-09-25-os-3.md": {
+        "date": "2023-09-25",
+        "title": "作業系統筆記 (3)",
+        "subtitle": "OS Structure",
+        "category": "personal-note",
+        "frontCover": "https://www.ionos.com/digitalguide/fileadmin/DigitalGuide/Teaser/operating-system-t.jpg",
+        "tag": "personal-note, courses, os",
+        "update": ""
+    },
+    "2023-09-25-ml-3-hung-yi-lee.md": {
+        "date": "2023-09-25",
+        "title": "機器學習筆記 (3)",
+        "subtitle": "ML model issues",
+        "category": "ML",
+        "frontCover": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9d8Ow4KIqpTLoH9uOKyiS-lKUNgheHP_H3yp13QoCFSK3avHItP0mOkcAbk1IO6qQmA8&usqp=CAU",
+        "tag": "personal-note, courses, ML",
+        "update": ""
+    },
+    "2023-09-24-os-edsim51-intro.md": {
+        "date": "2023-09-24",
+        "title": "作業系統筆記 - EdSim51 intro",
+        "subtitle": "8051 微控制器",
+        "category": "personal-note",
+        "frontCover": "https://www.ionos.com/digitalguide/fileadmin/DigitalGuide/Teaser/operating-system-t.jpg",
+        "tag": "personal-note, courses, os",
+        "update": ""
+    },
+    "2023-09-18-os-2.md": {
+        "date": "2023-09-18",
+        "title": "作業系統筆記 (2)",
+        "subtitle": "OS Introduction",
+        "category": "personal-note",
+        "frontCover": "https://www.ionos.com/digitalguide/fileadmin/DigitalGuide/Teaser/operating-system-t.jpg",
+        "tag": "personal-note, courses, os",
+        "update": ""
+    },
+    "2023-09-15-ml-2-hung-yi-lee.md": {
+        "date": "2023-09-15",
+        "title": "機器學習筆記 (2)",
+        "subtitle": "ML General Guide",
+        "category": "ML",
+        "frontCover": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9d8Ow4KIqpTLoH9uOKyiS-lKUNgheHP_H3yp13QoCFSK3avHItP0mOkcAbk1IO6qQmA8&usqp=CAU",
+        "tag": "personal-note, courses, ML",
+        "update": ""
+    },
+    "2023-09-14-ml-1-hung-yi-lee.md": {
+        "date": "2023-09-14",
+        "title": "機器學習筆記 (1)",
+        "subtitle": "ML、DL 基本概念",
+        "category": "ML",
+        "frontCover": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9d8Ow4KIqpTLoH9uOKyiS-lKUNgheHP_H3yp13QoCFSK3avHItP0mOkcAbk1IO6qQmA8&usqp=CAU",
+        "tag": "personal-note, courses, ML",
+        "update": ""
+    },
+    "2023-09-13-algorithm.md": {
+        "date": "2023-09-13",
+        "title": "演算法筆記 (Chapter 1 ~ 4)",
+        "subtitle": "大三資工上學期必修",
+        "category": "personal-note",
+        "frontCover": "https://miro.medium.com/v2/resize:fit:2000/1*GdCKWdjHLUGhkPoXjI6vIQ.jpeg",
+        "tag": "personal-note, courses",
+        "update": ""
+    },
+    "2023-09-12-network-security-1.md": {
+        "date": "2023-09-12",
+        "title": "網路安全筆記 (1)",
+        "subtitle": "資工選修",
+        "category": "personal-note",
+        "frontCover": "https://scholarlyoa.com/wp-content/uploads/2020/09/internet-security.jpg",
+        "tag": "personal-note, courses",
+        "update": ""
+    },
+    "2023-09-11-os-1.md": {
+        "date": "2023-09-11",
+        "title": "作業系統筆記 (1)",
+        "subtitle": "OS Historical Prospective",
+        "category": "personal-note",
+        "frontCover": "https://www.ionos.com/digitalguide/fileadmin/DigitalGuide/Teaser/operating-system-t.jpg",
+        "tag": "personal-note, courses, os",
+        "update": ""
     },
     "2023-09-08-junior-courses.md": {
         "date": "2023-09-08",
@@ -24,16 +150,25 @@ export default {
         "category": "personal-note",
         "frontCover": "https://kuochuanpan.github.io/ceag/images/logo.png",
         "tag": "personal-note, courses",
-        "update": "9/8/2023, 11:37:17 PM"
+        "update": ""
     },
-    "2023-09-04-toeic-words.md": {
-        "date": "2023-09-04",
-        "title": "Toeic words",
-        "subtitle": "toeic note",
-        "category": "toeic",
-        "frontCover": "study.png",
-        "tag": "toeic",
-        "update": "9/8/2023, 12:44:54 PM"
+    "2023-09-08-discord-music-bot.md": {
+        "date": "2023-09-08",
+        "title": "Discord Music Bot",
+        "subtitle": "simple music bot",
+        "category": "side-projects, discord",
+        "frontCover": "https://i.pinimg.com/474x/34/91/f3/3491f3e50ab6a4d51a348f9cc2419842.jpg",
+        "tag": "side-projects, discord, bot, back-end",
+        "update": ""
+    },
+    "2023-09-08-blog-introduction.md": {
+        "date": "2023-09-08",
+        "title": "Blog Introduction",
+        "subtitle": "brief overview of the framework of my blog",
+        "category": "others",
+        "frontCover": "https://images.inc.com/uploaded_files/image/1920x1080/getty_503426092_342208.jpg",
+        "tag": "blog, react",
+        "update": ""
     },
     "2023-09-06-college-loan.md": {
         "date": "2023-09-06",
@@ -42,7 +177,16 @@ export default {
         "category": "others",
         "frontCover": "https://kuochuanpan.github.io/ceag/images/logo.png",
         "tag": "loan, nthu",
-        "update": "9/8/2023, 12:44:51 PM"
+        "update": ""
+    },
+    "2023-09-04-toeic-words.md": {
+        "date": "2023-09-04",
+        "title": "Toeic words",
+        "subtitle": "toeic note",
+        "category": "toeic",
+        "frontCover": "study.png",
+        "tag": "toeic",
+        "update": ""
     },
     "2023-08-19-cp-note.md": {
         "date": "2023-08-19",

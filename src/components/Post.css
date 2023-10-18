@@ -140,9 +140,26 @@
 
 .post-file-content h4 {
     font-size: 1.25rem;
-    color: rgb(255, 196, 0);
+    color: rgb(209, 196, 132);
     text-shadow: 2px 2px rgba(255, 255, 255, 0.1);
     font-weight: 500;
+}
+
+.post-file-content h4::before {
+    content: '▵ ';
+    font-size: 1.2em;
+}
+
+.post-file-content h5 {
+    font-size: 1.1rem;
+    color: rgb(112, 176, 82);
+    text-shadow: 2px 2px rgba(255, 255, 255, 0.1);
+    font-weight: 500;
+}
+
+.post-file-content h5::before {
+    content: '　';
+    font-size: 1.2em;
 }
 
 .post-file-content li {
@@ -217,11 +234,24 @@
     font-style: italic;
 }
 
+.post-file-content .content-image {
+    max-height: 20rem;
+    max-width: 70%;
+    object-fit: cover;
+    object-position: center;
+    margin: auto;
+    display: block;
+}
+
 @media (max-width: 576px) {
 
     /* 576 768 992 1200 */
     .post-container .post-title {
         font-size: 1.2rem;
+    }
+
+    .post-file-content .content-image {
+        max-width: 100%;
     }
 
     .post-container .post-subtitle {
@@ -261,12 +291,15 @@
         align-items: end;
     }
 
-    .post-file-content ul {
+    /* .post-file-content ul {
         padding-left: 0rem;
     }
 
     .post-file-content ul ul {
         padding-left: 1rem;
+    } */
+    .post-file-content {
+        padding: 2rem 1rem;
     }
 }
 
