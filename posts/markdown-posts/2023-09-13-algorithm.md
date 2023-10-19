@@ -4,7 +4,7 @@ title: 演算法筆記 (Chapter 1 ~ 4)
 subtitle: 大三資工上學期必修
 category: personal-note
 frontCover: https://miro.medium.com/v2/resize:fit:2000/1*GdCKWdjHLUGhkPoXjI6vIQ.jpeg
-tag: personal-note, courses
+tag: personal-note, courses, algorithm
 ---
 ### Chapter 1 
 
@@ -80,24 +80,24 @@ Merge(A, p, q, r)
 #### O-notation
 - O-notation characterizes an **upper bound** on the asympototic behavior of a function
 - it says that a function grows **no faster** than a certain rate. This rate is based on the highest order term
-- `latex O(g(n)) = {f(n): \exists \; c, \; n_0}` such that `latex 0 \le f(n) \le cg(n) \; \forall \; n \ge n_0`
+- `latex O(g(n)) = {f(n): \exists \; c > 0, \; n_0}` such that `latex 0 \le f(n) \le cg(n) \; \forall \; n \ge n_0`
 
 #### ꭥ-notation
 - ꭥ-notation characterizes a **lower bound** on the asymptotic behavior of a function.
-- `latex \Omega(g(n)) = {f(n): \exists \; c, \; n_0}` such that `latex 0 \le cg(n) \le f(n) \; \forall \; n \ge n_0`
+- `latex \Omega(g(n)) = {f(n): \exists \; c > 0, \; n_0}` such that `latex 0 \le cg(n) \le f(n) \; \forall \; n \ge n_0`
 
 #### Θ-notation
 - Θ-notation characterizes a **tight bound** on the asympototic behavior of a function
 - A function grows precisely at a certain rate, again based on the highest-order term
 - If a function is both 𝑂(𝑓(𝑛)) and ꭥ(𝑓(𝑛)), then the function is Θ(𝑓(𝑛))
-- `latex \Theta(g(n)) = {f(n): \exists \; c_1, c_2, \; n_0}` such that `latex 0 \le c_1 g(n) \le f(n) \le c_2 g(n) \; \forall \; n \ge n_0`
+- `latex \Theta(g(n)) = {f(n): \exists \; c_1, c_2 > 0, \; n_0}` such that `latex 0 \le c_1 g(n) \le f(n) \le c_2 g(n) \; \forall \; n \ge n_0`
 
 #### o-notation
-- `latex O(g(n)) = {f(n): \exists \; c, \; n_0}` such that `latex 0 \le f(n) < cg(n) \; \forall \; n \ge n_0`
+- `latex O(g(n)) = {f(n): \exists \; c > 0, \; n_0}` such that `latex 0 \le f(n) < cg(n) \; \forall \; n \ge n_0`
 - `latex \lim_{n\to\infty} \frac{f(n)}{g(n)} = 0`
 
 #### o-notation
-- `latex O(g(n)) = {f(n): \exists \; c, \; n_0}` such that `latex 0 \le cg(n) < f(n) \; \forall \; n \ge n_0`
+- `latex O(g(n)) = {f(n): \exists \; c > 0, \; n_0}` such that `latex 0 \le cg(n) < f(n) \; \forall \; n \ge n_0`
 - `latex \lim_{n\to\infty} \frac{f(n)}{g(n)} = \infty`
 
 <br>
